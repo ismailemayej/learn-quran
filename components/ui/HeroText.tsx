@@ -5,16 +5,16 @@ import { motion } from "motion/react";
 
 export function HeroText({ text }: { text: string }) {
   const colors = [
-    "rgb(131, 179, 32)",
-    "rgb(47, 195, 106)",
-    "rgb(42, 169, 210)",
-    "rgb(4, 112, 202)",
-    "rgb(107, 10, 255)",
-    "rgb(183, 0, 218)",
-    "rgb(218, 0, 171)",
-    "rgb(230, 64, 92)",
-    "rgb(232, 98, 63)",
-    "rgb(249, 129, 47)",
+    "rgb(217, 235, 19)", // Bright Yellow-Green
+    "rgb(239, 240, 231)", // Soft Off-White
+    "rgb(42, 169, 210)", // Sky Blue
+    "rgb(255, 204, 102)", // Warm Amber
+    "rgb(186, 104, 200)", // Light Purple
+    "rgb(102, 187, 106)", // Mint Green
+    "rgb(255, 112, 67)", // Coral Orange
+    "rgb(255, 245, 157)", // Pale Yellow
+    "rgb(77, 182, 172)", // Turquoise
+    "rgb(156, 204, 101)", // Lime Green
   ];
 
   const [currentColors, setCurrentColors] = React.useState(colors);

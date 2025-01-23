@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -8,47 +9,46 @@ import {
   NavbarMenuItem,
 } from "@heroui/navbar";
 import { Button } from "@heroui/button";
-import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
-import { Input } from "@heroui/input";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
-
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
-
+import { GithubIcon, Logo } from "@/components/icons";
 export const Navbar = () => {
+  const pathname = usePathname();
+  const isActive = (href: string) => pathname === href; // Check if the link is active
   return (
     <HeroUINavbar
       maxWidth="xl"
       position="sticky"
-      className=" dark:bg-default-100 bg-slate-100 rounded-br-lg rounded-bl-lg"
+      className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 shadow-lg dark:text-white text-white rounded-br-lg rounded-bl-lg"
     >
+      {/* Left Content: Brand and Navigation */}
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+          <NextLink
+            className="flex justify-start items-center gap-2 hover:opacity-90"
+            href="/"
+          >
             <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-xl tracking-wide text-white">
+              LEARN QURAN
+            </p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden lg:flex gap-6 ml-4">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
+            <NavbarItem className="hover:text-[#fea621]" key={item.href}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
+                  "hover:font-semibold text-white transition-all duration-200",
+                  isActive(item.href) &&
+                    "font-bold underline bg-[#fea621] px-4 py-1 rounded-br-2xl rounded-tl-2xl "
                 )}
-                color="foreground"
                 href={item.href}
               >
                 {item.label}
@@ -58,43 +58,46 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
+      {/* Right Content: Theme Switch and GitHub Icon */}
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
+        <NavbarItem className="flex gap-4">
+          <Link
+            isExternal
+            aria-label="Github"
+            href={siteConfig.links.github}
+            className="hover:opacity-80 transition-opacity duration-200"
+          >
+            <GithubIcon className="w-6 h-6 text-white" />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
+      {/* Mobile Menu Toggle */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
+        <NavbarMenuToggle className="text-white" />
       </NavbarContent>
 
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
+      {/* Mobile Menu */}
+      <NavbarMenu className="bg-blue-800">
+        <div className="mx-4 mt-6 flex flex-col gap-4">
           {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
+            <NavbarMenuItem
+              key={`${item.label}-${index}`}
+              className={clsx(
+                "hover:bg-blue-600 hover:shadow-md hover:text-white transition-all duration-200 rounded-lg px-3 py-2",
+                isActive(item.href) && "bg-blue-600 text-white font-semibold" // Active styles
+              )}
+            >
+              <NextLink
+                className="w-full block text-lg font-medium text-white"
+                href={item.href}
               >
                 {item.label}
-              </Link>
+              </NextLink>
             </NavbarMenuItem>
           ))}
         </div>
