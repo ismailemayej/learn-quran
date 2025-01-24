@@ -4,6 +4,7 @@ import About from "./About";
 import { Ourservices } from "./ui/services/Ourservices";
 import { Testimonials } from "./Testimonials";
 import { Blogs } from "./Blogs";
+import Course from "@/components/course/Course";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <About />
       <Ourservices />
       <Testimonials />
+      <Course />
       <Blogs />
     </div>
   );

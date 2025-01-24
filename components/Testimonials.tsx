@@ -41,8 +41,8 @@ export function Testimonials() {
   ];
   return (
     <div>
-      <TitleText text="Testimonials" size="5xl" align="center" gradient />;
-      <AnimatedTestimonials testimonials={testimonials} />;
+      <TitleText text="প্রশংসা পত্র" size="5xl" align="center" gradient />
+      <AnimatedTestimonials testimonials={testimonials} />
     </div>
   );
 }

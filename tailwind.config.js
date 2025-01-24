@@ -13,6 +13,9 @@ module.exports = {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
       },
+      animation: {
+        pulse: "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
     },
   },
   darkMode: "class",

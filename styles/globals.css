@@ -1,5 +1,5 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap"); */
-
+@import url("https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tiro+Bangla:ital@0;1&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,4 +8,35 @@
   font-family: "Tiro Bangla", serif;
   font-weight: 400;
   font-style: normal;
+}
+.roboto {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-in-out;
+}
+.animate-fade-in.delay-200 {
+  animation-delay: 0.2s;
+}
+.animate-fade-in.delay-300 {
+  animation-delay: 0.3s;
+}
+.animate-fade-in.delay-400 {
+  animation-delay: 0.4s;
 }

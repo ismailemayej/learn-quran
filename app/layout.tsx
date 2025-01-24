@@ -1,12 +1,14 @@
 import "@/styles/globals.css";
+import clsx from "clsx";
 import { Metadata, Viewport } from "next";
 import { Link } from "@heroui/link";
-import { Tiro_Bangla } from "next/font/google";
-import clsx from "clsx";
 
-import { Providers } from "./providers";
+// Config imports
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+
+// Component imports
+import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import Top from "@/components/Top";
 
@@ -27,6 +29,7 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -37,13 +40,13 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased roboto",
           fontSans.variable
         )}
       >
+        <Top />
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-            <Top />
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-6 px-6 flex-grow">
               {children}

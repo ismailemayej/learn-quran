@@ -47,7 +47,7 @@ export const Navbar = () => {
                   linkStyles({ color: "foreground" }),
                   "hover:font-semibold text-white transition-all duration-200",
                   isActive(item.href) &&
-                    "font-bold underline bg-[#fea621] px-4 py-1 rounded-br-2xl rounded-tl-2xl "
+                    "font-bold underline bg-[#04ca25] px-4 py-1 rounded-br-2xl rounded-tl-2xl "
                 )}
                 href={item.href}
               >

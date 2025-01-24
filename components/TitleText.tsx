@@ -15,7 +15,7 @@ const TitleText: React.FC<TitleTextProps> = ({
   size = "xl",
   align = "left",
   gradient = false,
-  color = "text-gray-900 dark:text-white", // Default fallback color
+  color = "text-gray-900 dark:text-white",
   className = "",
 }) => {
   const sizeClasses = {
@@ -35,7 +35,7 @@ const TitleText: React.FC<TitleTextProps> = ({
         sizeClasses[size],
         `text-${align}`,
         gradient
-          ? "bg-gradient-to-r from-blue-900 via-purple-500 to-pink-100 bg-clip-text text-transparent"
+          ? "bangla  uppercase bg-gradient-to-r from-blue-900 via-purple-500 to-pink-100 bg-clip-text text-transparent"
           : color,
         "font-bold leading-tight",
         className

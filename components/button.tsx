@@ -10,7 +10,7 @@ interface ButtonAProps {
 const ButtonA: React.FC<ButtonAProps> = ({ children, link, className }) => {
   const buttonContent = (
     <button
-      className={`bg-[#fea621] px-4 py-1 rounded-br-2xl rounded-tl-2xl ${className}`}
+      className={`bg-[#04ca25] px-4 py-1 rounded-br-2xl rounded-tl-2xl ${className}`}
     >
       {children}
     </button>

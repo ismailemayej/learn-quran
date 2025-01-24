@@ -1,38 +1,38 @@
 export const projects = [
   {
-    title: "Stripe",
+    title: "যোগ্যতা সম্পূর্ণ শিক্ষক",
     description:
-      "A technology company that builds economic infrastructure for the internet.",
+      "আমাদের শিক্ষকরা যোগ্যতা সম্পূর্ণ এবং প্রশিক্ষিত। তারা আপনার শিক্ষার জন্য সম্পূর্ণ সমর্থন প্রদান করবে।",
     link: "https://stripe.com",
   },
   {
-    title: "Netflix",
+    title: "আকর্ষণীয় কার্যক্রম",
     description:
-      "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+      "আমাদের কার্যক্রম আকর্ষণীয় এবং শিক্ষামূলক। এগুলি আপনার শিক্ষার অভিজ্ঞতা আরো ভাল করতে সাহায্য করবে।",
     link: "https://netflix.com",
   },
   {
-    title: "Google",
+    title: " সুবিধাজনক সময়সূচি",
     description:
-      "A multinational technology company that specializes in Internet-related services and products.",
+      "আমাদের সময়সূচি সুবিধাজনক এবং সহজ ব্যবহার। এটি আপনার শিক্ষার অভিজ্ঞতা আরো ভাল করতে সাহায্য করবে।",
     link: "https://google.com",
   },
   {
-    title: "Meta",
+    title: "সহজ প্রবেশ",
     description:
-      "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
+      "আমাদের প্ল্যাটফর্ম সহজ প্রবেশ এবং ব্যবহার করা যায়। এটি আপনার শিক্ষার অভিজ্ঞতা আরো ভাল করতে সাহায্য করবে।",
     link: "https://meta.com",
   },
   {
-    title: "Amazon",
+    title: "সমর্থন এবং সহায়তা",
     description:
-      "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+      "আমাদের সমর্থন এবং সহায়তা দিয়ে আপনি আপনার শিক্ষার অভিজ্ঞতা আরো ভাল করতে পারবেন।",
     link: "https://amazon.com",
   },
   {
-    title: "Microsoft",
+    title: "সুরক্ষিত এবং নিরাপদ",
     description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+      "আমাদের প্ল্যাটফর্ম সুরক্ষিত এবং নিরাপদ যা আপনার শিক্ষার অভিজ্ঞতা আরো ভাল করতে সাহায্য করবে।",
     link: "https://microsoft.com",
   },
 ];
