@@ -38,7 +38,7 @@ export const BlogGridItem = ({
   return (
     <div
       className={cn(
-        "group-hover/bento:translate-x-2  relative row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] border-black bg-white border justify-between flex flex-col space-y-4",
+        "relative row-span-1 rounded-xl group hover:shadow-lg transition duration-200 shadow-md dark:shadow-none p-4 bg-white dark:bg-gray-900 dark:border-gray-700 border border-gray-300 justify-between flex flex-col space-y-4",
         className
       )}
     >
@@ -53,20 +53,23 @@ export const BlogGridItem = ({
             height={176}
           />
         ) : (
-          <div className="rounded-xl w-full h-44 bg-gray-200 flex items-center justify-center">
-            <span className="text-neutral-500 text-sm">No Image Available</span>
+          <div className="rounded-xl w-full h-44 bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
+            <span className="text-neutral-500 dark:text-neutral-400 text-sm">
+              No Image Available
+            </span>
           </div>
         )}
 
-        <div className="font-sans font-bold line-clamp-2 text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
+        <div className="font-sans font-bold line-clamp-2 text-neutral-800 dark:text-neutral-200 mb-2 mt-2">
           {title || "Untitled"}
         </div>
-        {/* <div className="font-sans font-normal line-clamp-2 text-neutral-600 text-xs dark:text-neutral-300">
+        {/* Uncomment description if needed */}
+        {/* <div className="font-sans font-normal line-clamp-2 text-neutral-600 dark:text-neutral-400 text-xs">
           {description || "No description available."}
         </div> */}
         <ButtonA
           link={`/blog/${link}`}
-          className="mt-6 absolute bottom-0 hover:translate-x-1 lg:mt-2"
+          className=" lg:absolute lg:bottom-[-6] mt-6 lg:mt-2 hover:translate-x-1 text-sm px-4 py-2 bg-blue-500 text-white dark:bg-blue-600 rounded-md hover:bg-blue-600 dark:hover:bg-blue-700 transition"
         >
           Details
         </ButtonA>

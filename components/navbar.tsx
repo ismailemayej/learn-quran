@@ -17,6 +17,7 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, Logo } from "@/components/icons";
+import ButtonA from "./button";
 export const Navbar = () => {
   const pathname = usePathname();
   const isActive = (href: string) => pathname === href; // Check if the link is active
@@ -64,6 +65,7 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="flex gap-4">
+          <ButtonA link="/registration">Appy Now</ButtonA>
           <Link
             isExternal
             aria-label="Github"
@@ -78,11 +80,20 @@ export const Navbar = () => {
 
       {/* Mobile Menu Toggle */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+        <Link
+          isExternal
+          aria-label="Github"
+          href={siteConfig.links.github}
+          className="hover:opacity-80 transition-opacity duration-200"
+        >
+          <GithubIcon className="w-6 h-6 text-white" />
+        </Link>
         <NavbarMenuToggle className="text-white" />
       </NavbarContent>
 
       {/* Mobile Menu */}
       <NavbarMenu className="bg-blue-800">
+        <ButtonA link="/registration">Appy Now</ButtonA>
         <div className="mx-4 mt-6 flex flex-col gap-4">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem

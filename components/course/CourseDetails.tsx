@@ -3,11 +3,16 @@ import { Accordion, AccordionItem } from "@heroui/react";
 
 export default function CourseDetails() {
   return (
-    <div>
-      <h1 className="text-xl ml-2 text-white"> যা যা থাকছে এই কোর্সে </h1>
-      <Accordion className="bangla text-white" variant="bordered">
+    <div className="p-4   rounded-lg ">
+      <h1 className="text-xl ml-2 text-gray-900 dark:text-white font-semibold mb-4">
+        যেভাবে সাজিয়েছি
+      </h1>
+      <Accordion
+        className="bangla text-gray-800 dark:text-gray-300"
+        variant="bordered"
+      >
         <AccordionItem
-          className="text-white"
+          className=" text-gray-900 dark:text-gray-300 rounded-md"
           key="1"
           aria-label="Accordion 1"
           title="কোরআন শিখতে কি ধরনের প্রস্তুতি প্রয়োজন?"
@@ -17,6 +22,7 @@ export default function CourseDetails() {
           দরকার।
         </AccordionItem>
         <AccordionItem
+          className="  text-gray-900 dark:text-gray-300 rounded-md "
           key="2"
           aria-label="Accordion 2"
           title="কোরআন শিক্ষা শুরু করার উপযুক্ত বয়স কত?"
@@ -26,6 +32,7 @@ export default function CourseDetails() {
           আরও কার্যকর হতে পারেন।
         </AccordionItem>
         <AccordionItem
+          className="  text-gray-900 dark:text-gray-300 rounded-md "
           key="3"
           aria-label="Accordion 3"
           title="কোরআন শেখার জন্য কি কোনো বিশেষ কোর্সের প্রয়োজন?"

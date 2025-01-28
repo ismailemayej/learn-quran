@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 
 export const Services = ({
   items,
@@ -21,7 +20,7 @@ export const Services = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10 ",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10 shadow-xl rounded-lg",
         className
       )}
     >
@@ -29,14 +28,14 @@ export const Services = ({
         <Link
           href={item?.link}
           key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+          className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-neutral-300 dark:bg-slate-800/[0.8] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -73,7 +72,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden dark:bg-[#37415133] bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-white dark:bg-slate-800 border border-gray-200 dark:border-white/[0.2] shadow-md hover:shadow-lg dark:shadow-none group-hover:border-gray-300 dark:group-hover:border-slate-700 relative z-20",
         className
       )}
     >
@@ -83,6 +82,7 @@ export const Card = ({
     </div>
   );
 };
+
 export const CardIcon = ({
   className,
   children,
@@ -91,11 +91,17 @@ export const CardIcon = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
+    <h4
+      className={cn(
+        "text-gray-900 dark:text-zinc-100 font-bold tracking-wide mt-4",
+        className
+      )}
+    >
       {children}
     </h4>
   );
 };
+
 export const CardTitle = ({
   className,
   children,
@@ -106,7 +112,7 @@ export const CardTitle = ({
   return (
     <h4
       className={cn(
-        "text-zinc-100 lg:text-xl text-lg font-bold tracking-wide mt-4",
+        "text-gray-900 dark:text-zinc-100 lg:text-xl text-lg font-bold tracking-wide mt-4",
         className
       )}
     >
@@ -114,6 +120,7 @@ export const CardTitle = ({
     </h4>
   );
 };
+
 export const CardDescription = ({
   className,
   children,
@@ -124,7 +131,7 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        "mt-8 text-zinc-400 lg:text-lg text-md tracking-wide leading-relaxed text-sm",
+        "mt-4 text-gray-600 dark:text-zinc-400 lg:text-lg text-md tracking-wide leading-relaxed text-sm",
         className
       )}
     >

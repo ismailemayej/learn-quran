@@ -12,8 +12,8 @@ const Home = () => {
       <HeroSection />
       <About />
       <Ourservices />
-      <Testimonials />
       <Course />
+      <Testimonials />
       <Blogs />
     </div>
   );

@@ -40,10 +40,10 @@ const HeroSection: React.FC = () => {
             }`}
           >
             <div className="space-y-6 py-3">
-              <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-yellow-400 rounded-lg shadow-lg">
+              <h1 className=" drop-shadow-xl text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-yellow-400 rounded-lg ">
                 আল-কুরআন শিখুন সহজে ও সৌন্দর্যে
               </h1>
-              <p className="text-lg md:text-2xl font-light text-gray-300 rounded-md shadow-md">
+              <p className="text-lg md:text-2xl font-light text-gray-300  shadow-md">
                 আল-কুরআন পবিত্র ইসলামিক বই। এটি প্রতিটি মুসলিমের জীবনে অত্যন্ত
                 গুরুত্বপূর্ণ। আল-কুরআন শিখুন সহজে ও সৌন্দর্যে।
               </p>
@@ -57,10 +57,10 @@ const HeroSection: React.FC = () => {
             }`}
           >
             <div className="space-y-6 py-3">
-              <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-yellow-400 rounded-lg shadow-lg">
+              <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-yellow-400 rounded-lg ">
                 خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
               </h1>
-              <p className="text-lg md:text-2xl font-light text-gray-300 rounded-md shadow-md">
+              <p className="text-lg md:text-2xl font-light text-gray-300  shadow-md">
                 তোমাদের মধ্যে সে ব্যক্তি উত্তম, যে নিজে কুরআন শিক্ষা গ্রহণ করে
                 এবং অপরকে শিক্ষা দেয়।
               </p>
@@ -74,10 +74,10 @@ const HeroSection: React.FC = () => {
             }`}
           >
             <div className="space-y-6 py-3">
-              <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400 rounded-lg shadow-lg">
+              <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400 rounded-lg drop-shadow-2xl ">
                 تعلم القرآن باللغة العربية
               </h1>
-              <p className="text-lg md:text-2xl font-light text-gray-300 rounded-md shadow-md">
+              <p className="text-lg md:text-2xl font-light text-gray-300  shadow-md">
                 আল-কুরআন আরবি ভাষায় অধ্যয়ন করুন এবং এর সৌন্দর্য ও অর্থ অনুধাবন
                 করুন। এটি ইসলামের মূল।
               </p>
@@ -91,10 +91,10 @@ const HeroSection: React.FC = () => {
             }`}
           >
             <div className="space-y-6 py-3">
-              <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400 rounded-lg shadow-lg">
+              <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400 rounded-lg ">
                 ইসলামিক হাদিস থেকে শিক্ষাগ্রহণ
               </h1>
-              <p className="text-lg md:text-2xl font-light text-gray-300 rounded-md shadow-md">
+              <p className="text-lg md:text-2xl font-light text-gray-300  ">
                 ইসলামিক হাদিসের মাধ্যমে কুরআনের ব্যাখ্যা এবং বাস্তব জীবনের
                 দিকনির্দেশনা শিখুন।
               </p>
