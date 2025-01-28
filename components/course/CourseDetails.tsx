@@ -3,7 +3,7 @@ import { Accordion, AccordionItem } from "@heroui/react";
 
 export default function CourseDetails() {
   return (
-    <div className="p-4   rounded-lg ">
+    <div className="lg:p-4 rounded-lg">
       <h1 className="text-xl ml-2 text-gray-900 dark:text-white font-semibold mb-4">
         যেভাবে সাজিয়েছি
       </h1>
@@ -17,9 +17,11 @@ export default function CourseDetails() {
           aria-label="Accordion 1"
           title="কোরআন শিখতে কি ধরনের প্রস্তুতি প্রয়োজন?"
         >
-          কোরআন শিখতে প্রথমে আধ্যাত্মিক প্রস্তুতি প্রয়োজন। এছাড়াও শুদ্ধভাবে
-          উচ্চারণ (তাজউইদ) শেখা, নিয়মিত অধ্যয়ন এবং অধ্যবসায়ের জন্য মনোযোগী হওয়া
-          দরকার।
+          <p className=" text-lg">
+            কোরআন শিখতে প্রথমে আধ্যাত্মিক প্রস্তুতি প্রয়োজন। এছাড়াও শুদ্ধভাবে
+            উচ্চারণ (তাজউইদ) শেখা, নিয়মিত অধ্যয়ন এবং অধ্যবসায়ের জন্য মনোযোগী
+            হওয়া দরকার।
+          </p>
         </AccordionItem>
         <AccordionItem
           className="  text-gray-900 dark:text-gray-300 rounded-md "
@@ -27,9 +29,11 @@ export default function CourseDetails() {
           aria-label="Accordion 2"
           title="কোরআন শিক্ষা শুরু করার উপযুক্ত বয়স কত?"
         >
-          কোরআন শিক্ষা শুরু করার জন্য কোনো নির্দিষ্ট বয়স নেই। যে কোনো বয়সে কোরআন
-          শেখা শুরু করা যেতে পারে, তবে শিশুদের জন্য তাজউইদসহ শুদ্ধভাবে শিখে বড়রা
-          আরও কার্যকর হতে পারেন।
+          <p className=" text-lg">
+            কোরআন শিক্ষা শুরু করার জন্য কোনো নির্দিষ্ট বয়স নেই। যে কোনো বয়সে
+            কোরআন শেখা শুরু করা যেতে পারে, তবে শিশুদের জন্য তাজউইদসহ শুদ্ধভাবে
+            শিখে বড়রা আরও কার্যকর হতে পারেন।
+          </p>
         </AccordionItem>
         <AccordionItem
           className="  text-gray-900 dark:text-gray-300 rounded-md "
@@ -37,8 +41,10 @@ export default function CourseDetails() {
           aria-label="Accordion 3"
           title="কোরআন শেখার জন্য কি কোনো বিশেষ কোর্সের প্রয়োজন?"
         >
-          হ্যাঁ, শুদ্ধভাবে কোরআন শিক্ষা লাভের জন্য তাজউইদ এবং আছান পড়ার কোর্স
-          নিতে পারেন। তবে, এটি ব্যক্তিগত ইচ্ছা ও সময়ের ওপর নির্ভরশীল।
+          <p className=" text-lg">
+            হ্যাঁ, শুদ্ধভাবে কোরআন শিক্ষা লাভের জন্য তাজউইদ এবং আছান পড়ার কোর্স
+            নিতে পারেন। তবে, এটি ব্যক্তিগত ইচ্ছা ও সময়ের ওপর নির্ভরশীল।
+          </p>
         </AccordionItem>
       </Accordion>
     </div>

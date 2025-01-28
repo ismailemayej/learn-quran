@@ -28,8 +28,8 @@ const SignIn = () => {
   }, [state, ref, router]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="grid lg:grid-cols-2 gap-10 bg-white rounded-xl shadow-xl overflow-hidden min-w-5xl">
+    <div className="flex items-center justify-center min-h-screen bangla">
+      <div className="border border-green-300 text-center align-middle lg:max-w-5xl grid lg:grid-cols-2 gap-10 bg-white rounded-xl shadow-xl overflow-hidden">
         {/* Left Side (Image) */}
         <div className="hidden lg:flex justify-center items-center bg-gradient-to-br from-green-200 to-green-500">
           <Image
@@ -44,39 +44,35 @@ const SignIn = () => {
         {/* Right Side (Form) */}
         <div className="p-8 flex flex-col justify-center w-full bg-gradient-to-br from-white via-gray-50 to-green-100">
           <h2 className="text-3xl lg:text-4xl font-bold text-green-600 text-center mb-6">
-            Log In
+            একাউন্ট থাকলে লগইন করুন
           </h2>
           <form ref={ref} action={fromAction} className="space-y-6">
+            <Input className="mt-2" name="email" type="email" label="ইমেইল" />
             <Input
-              name="email"
-              type="email"
-              className="text-black outline-none bg-gradient-to-br from-gray-50 to-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-200 rounded-lg"
-              variant="bordered"
-              label="Email"
-            />
-            <Input
+              className="mt-2"
               name="password"
               type="password"
-              className="text-black outline-none bg-gradient-to-br from-gray-50 to-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-200 rounded-lg"
-              variant="bordered"
-              label="Password"
+              label="পাসওয়ার্ড"
             />
             <div className="flex justify-center">
               <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 focus:ring focus:ring-green-300"
               >
-                Login
+                প্রবেশ করুন
               </button>
             </div>
           </form>
           <div className="mt-6 text-center">
-            <span className="text-gray-600">Not a user? </span>
+            <span className="text-gray-600">
+              আমাদের কোর্সে ভর্তি না থাকলে প্রবেশ করতে পারবেন না। ভর্তি হতে
+              ক্লিক করুন।{" "}
+            </span>
             <Link
               href="/registration"
               className="text-green-700 font-semibold hover:text-green-500"
             >
-              Register Now
+              ভর্তি ফরম
             </Link>
           </div>
         </div>

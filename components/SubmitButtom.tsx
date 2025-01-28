@@ -16,8 +16,7 @@ export default function SubmitButton({
 
   return (
     <Button
-      color="primary"
-      className={`${className} my-3 w-full`} // Adding className here properly
+      className={`${className} w-full bg-gradient-to-r from-green-400 to-green-600 text-white py-3 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700 focus:ring focus:ring-green-300`} // Adding className here properly
       disabled={pending}
       type="submit"
     >

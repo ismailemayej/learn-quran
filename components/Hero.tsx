@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative bg-gradient-to-br bangla  from-blue-900 via-indigo-800 to-purple-900 text-white w-full min-h-screen flex items-center justify-center rounded-xl overflow-hidden">
+    <div className=" lg:mb-0 pb-3 relative bg-gradient-to-br bangla from-blue-900 via-indigo-800 to-purple-900 text-white w-full lg:min-h-screen flex items-center justify-center rounded-xl overflow-hidden">
       {/* Background Animation */}
       <div className="absolute inset-0 overflow-hidden rounded-xl">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/40 to-transparent rounded-xl"></div>
@@ -60,7 +60,7 @@ const HeroSection: React.FC = () => {
               <h1 className="text-4xl pt-2.5 md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-yellow-400 rounded-lg ">
                 خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
               </h1>
-              <p className="text-lg md:text-2xl font-light text-gray-300  shadow-md">
+              <p className="text-lg md:text-2xl font-light text-gray-300">
                 তোমাদের মধ্যে সে ব্যক্তি উত্তম, যে নিজে কুরআন শিক্ষা গ্রহণ করে
                 এবং অপরকে শিক্ষা দেয়।
               </p>
@@ -106,9 +106,6 @@ const HeroSection: React.FC = () => {
         <div className="mt-10 space-x-4">
           <button className="px-6 py-3 bg-gradient-to-r from-green-400 to-teal-500 hover:from-green-500 hover:to-teal-600 text-white font-semibold rounded-full shadow-md transition duration-300 ease-in-out">
             Start Learning
-          </button>
-          <button className="px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300 ease-in-out">
-            Explore More
           </button>
         </div>
       </div>

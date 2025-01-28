@@ -35,7 +35,7 @@ const TitleText: React.FC<TitleTextProps> = ({
         sizeClasses[size],
         `text-${align}`,
         gradient
-          ? "bangla  uppercase text-5xl font-bold text-center py-3 my-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-900 via-purple-500 to-pink-100 dark:from-teal-400 dark:to-blue-500"
+          ? "bangla  uppercase lg:text-5xl text-5xl font-bold text-center py-3 my-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-900 via-purple-500 to-pink-100 dark:from-teal-400 dark:to-blue-500"
           : color,
         "font-bold leading-tight",
         className

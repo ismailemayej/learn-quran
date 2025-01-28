@@ -9,7 +9,7 @@ const About = () => {
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12">
         {/* Left Content */}
         <div className="flex-grow text-center lg:text-left">
-          <h1 className="text-2xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold mb-6">
             {" "}
             আমাদের সম্পর্কে
           </h1>
@@ -20,7 +20,7 @@ const About = () => {
             শিখতে পারবেন সহজে ও সৌন্দর্যে। আমাদের এই ওয়েবসাইটে আপনি পবিত্র
             আল-কুরআন শিখতে পারবেন।
           </p>
-          <div className="flex justify-center lg:justify-start gap-4">
+          <div className="flex justify-center items-center lg:justify-start gap-4">
             <ButtonA className="px-5 py-2" link="/about">
               আরও জানুন
             </ButtonA>

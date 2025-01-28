@@ -21,8 +21,11 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
 
+  // Ensure default theme is set to "light"
+  const isLightTheme = theme === "light" || (!theme && !isSSR);
+
   const onChange = () => {
-    theme === "dark" ? setTheme("light") : setTheme("dark");
+    setTheme(isLightTheme ? "dark" : "light");
   };
 
   const {
@@ -33,8 +36,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getInputProps,
     getWrapperProps,
   } = useSwitch({
-    isSelected: theme === "light" || isSSR,
-    "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
+    isSelected: isLightTheme,
+    "aria-label": `Switch to ${isLightTheme ? "dark" : "light"} mode`,
     onChange,
   });
 
@@ -42,7 +45,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     <Component
       {...getBaseProps({
         className: clsx(
-          "px-px  transition-opacity hover:opacity-80 cursor-pointer",
+          "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
           classNames?.base
         ),
@@ -70,7 +73,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {!isSelected || isSSR ? (
+        {isLightTheme ? (
           <SunFilledIcon size={22} />
         ) : (
           <MoonFilledIcon size={22} />

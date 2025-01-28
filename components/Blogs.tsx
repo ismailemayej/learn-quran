@@ -23,7 +23,7 @@ export async function Blogs() {
   return (
     <div>
       <TitleText text="ব্লগ" size="5xl" align="center" gradient />
-      <BlogCard className="mt-2.5 container mx-auto">
+      <BlogCard className="mt-2.5 mx-auto">
         {data.slice(0, 4).map((item: any) => (
           <BlogGridItem
             key={item._id}

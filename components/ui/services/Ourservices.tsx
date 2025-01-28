@@ -4,10 +4,10 @@ import { projects } from "./ServicesProject";
 
 export function Ourservices() {
   return (
-    <div className="container mx-auto bangla ">
+    <div className=" mx-auto bangla ">
       <TitleText
         text="আমাদের সার্ভিস সমূহ"
-        size="5xl"
+        size="2xl"
         align="center"
         gradient
       />
