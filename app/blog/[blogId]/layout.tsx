@@ -20,14 +20,17 @@ export default async function BlogLayout({
         {children}
       </div>
       {/* Right section: All posts */}
-      <div className=" light:bg-slate-100  lg:col-span-1 text-white rounded-xl p-3 shadow-lg">
+      <div className=" lg:mt-[-30px] light:bg-slate-100  lg:col-span-1 text-white rounded-xl p-4 shadow-lg">
         <div className="lg:fixed">
           <h1 className="text-2xl lg:text-4xl font-bold leading-snug  text-yellow-900 dark:text-white">
             All Posts
           </h1>
           <div className="mt-4 space-y-4">
             {data.slice(0, 4).map((item: any) => (
-              <div className="dark:bg-gray-700 bg-white light:border dark:text-white  text-black shadow-2xl p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-900 transition">
+              <div
+                key={item._id}
+                className="dark:bg-gray-700 bg-white light:border dark:text-white  text-black shadow-2xl p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-900 transition"
+              >
                 <NextLink href={`/blog/${item._id}`}>
                   <div className="flex justify-start gap-2">
                     <Image

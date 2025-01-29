@@ -15,7 +15,7 @@ const BlogDetails = async ({ params }: any) => {
   const cleanDetails = stripHtmlTags(data.details);
 
   return (
-    <div className=" pb-6 lg:px-3">
+    <div className="bangla pb-6 lg:px-3">
       <div className="max-w-5xl mx-auto  rounded-xl overflow-hidden">
         {/* Blog Header */}
         <div className="p-6 lg:p-10">

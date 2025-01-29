@@ -71,8 +71,11 @@ const Registration = () => {
     if (!formData.education) newErrors.education = "শিক্ষার রুট নির্বাচন করুন";
     if (!formData.current_status)
       newErrors.current_status = "বর্তমান অবস্থা নির্বাচন করুন";
-    if (!formData.phone) newErrors.phone = "মোবাইল নাম্বার প্রয়োজন";
-    if (!formData.phone) newErrors.qualification = "শিক্ষাগত যোগ্যতা প্রয়োজন";
+    if (!formData.phone) {
+      newErrors.phone = "মোবাইল নাম্বার প্রয়োজন";
+    } else if (!/^\d{11,}$/.test(formData.phone)) {
+      newErrors.phone = "মোবাইল নাম্বার কমপক্ষে ১১ ডিজিট";
+    }
     if (!formData.email) newErrors.email = "ইমেইল প্রয়োজন";
     if (!formData.password) newErrors.password = "পাসওয়ার্ড প্রয়োজন";
     if (!formData.gender) newErrors.gender = "লিঙ্গ নির্বাচন করুন";

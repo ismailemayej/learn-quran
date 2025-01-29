@@ -25,7 +25,7 @@ export const Navbar = () => {
     <HeroUINavbar
       maxWidth="xl"
       position="sticky"
-      className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 shadow-lg dark:text-white text-white rounded-br-lg rounded-bl-lg"
+      className=" fixed bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 shadow-lg dark:text-white text-white rounded-br-lg rounded-bl-lg"
     >
       {/* Left Content: Brand and Navigation */}
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -93,9 +93,9 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       <NavbarMenu className="bg-blue-800">
-        <ButtonA link="/registration">Appy Now</ButtonA>
         <div className="mx-4 mt-6 flex flex-col gap-4">
-          {siteConfig.navMenuItems.map((item, index) => (
+          <ButtonA link="/registration">Appy Now</ButtonA>
+          {siteConfig.navItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item.label}-${index}`}
               className={clsx(

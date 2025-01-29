@@ -1,10 +1,10 @@
 "use client";
 import { Input } from "@heroui/react";
-import React, { createRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import login from "../../../public/Login-bro.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { useFormState } from "react-dom";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { loginUser } from "@/components/DataAction/DataHandle";
 import { useRouter } from "next/navigation";
@@ -13,19 +13,26 @@ export const Token = "accessToken";
 
 const SignIn = () => {
   const router = useRouter();
-  const ref = createRef<HTMLFormElement>();
-  const [state, fromAction] = useFormState(loginUser, null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
-  useEffect(() => {
-    if (state && state.success) {
-      SetCookies("accessToken", state?.token);
-      toast.success("Successfully signed in");
-      ref.current?.reset();
+  const onSubmit = async (data: any) => {
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => formData.append(key, data[key]));
+    const response = await loginUser(data, formData);
+    if (response.success) {
+      SetCookies("accessToken", response.token);
+      toast.success("সফলভাবে প্রবেশ করেছেন");
+      reset();
       router.push("/");
-    } else if (state) {
-      toast.error(state?.message);
+    } else {
+      toast.error(response.message);
     }
-  }, [state, ref, router]);
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bangla">
@@ -46,14 +53,53 @@ const SignIn = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-green-600 text-center mb-6">
             একাউন্ট থাকলে লগইন করুন
           </h2>
-          <form ref={ref} action={fromAction} className="space-y-6">
-            <Input className="mt-2" name="email" type="email" label="ইমেইল" />
-            <Input
-              className="mt-2"
-              name="password"
-              type="password"
-              label="পাসওয়ার্ড"
-            />
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            {/* Email Field */}
+            <div>
+              <Input
+                {...register("email", {
+                  required: "ইমেইল দেয়া আবশ্যক",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "সঠিক ইমেইল প্রদান করুন",
+                  },
+                })}
+                className="mt-2"
+                name="email"
+                type="email"
+                label="ইমেইল"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message as string}
+                </p>
+              )}
+            </div>
+
+            {/* Password Field */}
+            <div>
+              <Input
+                {...register("password", {
+                  required: "পাসওয়ার্ড দেয়া আবশ্যক",
+                  minLength: {
+                    value: 6,
+                    message: "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে",
+                  },
+                })}
+                className="mt-2"
+                name="password"
+                type="password"
+                label="পাসওয়ার্ড"
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message as string}
+                </p>
+              )}
+            </div>
+
+            {/* Submit Button */}
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -63,6 +109,8 @@ const SignIn = () => {
               </button>
             </div>
           </form>
+
+          {/* Registration Link */}
           <div className="mt-6 text-center">
             <span className="text-gray-600">
               আমাদের কোর্সে ভর্তি না থাকলে প্রবেশ করতে পারবেন না। ভর্তি হতে
