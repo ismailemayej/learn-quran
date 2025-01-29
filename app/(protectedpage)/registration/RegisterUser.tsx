@@ -1,7 +1,6 @@
 "use client";
 import { Input, Select, SelectItem } from "@heroui/react";
 import React, { createRef, useEffect, useState } from "react";
-import { DatePicker } from "@heroui/date-picker";
 import login from "../../../public/Login-bro.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -145,7 +144,7 @@ const Registration = () => {
               <span>
                 <Select
                   label="শিক্ষার রুট"
-                  className="w-full mt-2"
+                  className="w-full mt-2 bangla"
                   name="education"
                   errorMessage={errors.education}
                 >
@@ -160,7 +159,7 @@ const Registration = () => {
                 <Select
                   label="বর্তমান অবস্থা"
                   name="current_status"
-                  className="w-full mt-2"
+                  className="w-full mt-2 bangla"
                 >
                   <SelectItem key="reson-1">
                     ছোট বেলায় শিখেছি এখন ভুলে গেছি।
@@ -180,11 +179,13 @@ const Registration = () => {
                 <Select
                   label="শিক্ষাগত যোগ্যতা"
                   name="qualification"
-                  className="w-full mt-2"
+                  className="w-full mt-2 bangla"
                   errorMessage={errors.education}
                 >
                   {education.map((edu) => (
-                    <SelectItem key={edu.key}>{edu.label}</SelectItem>
+                    <SelectItem className="bangla" key={edu.key}>
+                      {edu.label}
+                    </SelectItem>
                   ))}
                 </Select>
                 {errors.qualification && (
@@ -195,7 +196,7 @@ const Registration = () => {
               <div className="flex gap-2 lg:gap-2 justify-center items-center mt-2">
                 <Input
                   label="বয়স"
-                  className="lg:w-[50%]"
+                  className="lg:w-[50%] bangla"
                   name="year"
                   type="number"
                   errorMessage={errors.year}
@@ -204,7 +205,7 @@ const Registration = () => {
                 <Select
                   label="লিঙ্গ"
                   name="gender"
-                  className="mx-auto lg:w-[50%]"
+                  className="mx-auto lg:w-[50%] bangla"
                 >
                   {gender.map((gen) => (
                     <SelectItem key={gen.key}>{gen.label}</SelectItem>
@@ -216,7 +217,7 @@ const Registration = () => {
               </div>
               <span>
                 <Input
-                  className="mt-2"
+                  className="mt-2 bangla"
                   name="phone"
                   type="text"
                   label="মোবাইল নাম্বার"
@@ -226,7 +227,7 @@ const Registration = () => {
               </span>
               <span>
                 <Input
-                  className="mt-2"
+                  className="mt-2 bangla"
                   name="email"
                   type="email"
                   label="ইমেইল"

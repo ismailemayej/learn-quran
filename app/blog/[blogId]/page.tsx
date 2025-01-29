@@ -8,7 +8,6 @@ const BlogDetails = async ({ params }: any) => {
     }
   );
   const data = await res.json();
-
   const stripHtmlTags = (html: string) => {
     return html.replace(/<\/?[^>]+(>|$)/g, "");
   };
