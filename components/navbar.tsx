@@ -8,7 +8,6 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
@@ -65,7 +64,6 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="flex gap-4">
-          <ButtonA link="/registration">Appy Now</ButtonA>
           <Link
             isExternal
             aria-label="Github"

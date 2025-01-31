@@ -24,9 +24,7 @@ const About = () => {
               আরও জানুন
             </ButtonA>
             <NextLink href="/contact">
-              <button className="bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white font-medium hover:bg-gray-400 dark:hover:bg-gray-600 hover:shadow-lg px-6 py-3 rounded-full shadow-md transition-all">
-                যোগাযোগ করুন
-              </button>
+              <ButtonA>যোগাযোগ করুন</ButtonA>
             </NextLink>
           </div>
         </div>

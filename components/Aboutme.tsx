@@ -12,7 +12,7 @@ const AboutMe = () => {
         <div className=" flex-shrink-0 w-full lg:w-1/2">
           <Image
             alt="About us"
-            className="rounded-lg shadow-xl dark:shadow-none object-cover"
+            className="rounded-lg lg:shadow-xl dark:shadow-none object-cover"
             height={300} // Adjust height
             priority={true} // Ensure priority loading for LCP optimization
             src={me}
@@ -29,7 +29,7 @@ const AboutMe = () => {
             শিখতে পারবেন সহজে ও সৌন্দর্যে। আমাদের এই ওয়েবসাইটে আপনি পবিত্র
             আল-কুরআন শিখতে পারবেন।
           </p>
-          <ButtonA className="px-5 py-2" link="/about">
+          <ButtonA className="px-5 py-2 hover:bg-[#dfaf569a]" link="/about">
             আরও জানুন
           </ButtonA>
         </div>
