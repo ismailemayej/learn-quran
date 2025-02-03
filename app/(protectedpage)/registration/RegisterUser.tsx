@@ -5,10 +5,11 @@ import login from "../../../public/Login-bro.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useFormState } from "react-dom";
-import { signUpUser } from "@/components/DataAction/DataHandle";
 import SubmitButton from "@/components/SubmitButtom";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { RegistrationFormData } from "@/types";
+import { signUpUser } from "@/app/api/Register";
 
 export const education = [
   { key: "one-five", label: "ওয়ান - ফাইভ" },
@@ -20,70 +21,61 @@ export const education = [
   { key: "masters", label: "মাস্টার্স" },
 ];
 export const gender = [
-  { key: "Male", label: "Male" },
-  { key: "Female", label: "Female" },
-  { key: "Other", label: "Other" },
+  { key: "Male", label: "ছেলে" },
+  { key: "Female", label: "মেয়ে" },
+  { key: "Other", label: "অন্যান্য" },
 ];
-
 const Registration = () => {
   const router = useRouter();
   const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(signUpUser, null);
   const [errors, setErrors] = useState<FormErrors>({});
-
   useEffect(() => {
-    if (state && state.success) {
-      toast.success("Successfully signed up");
+    if (state?.success === "success") {
+      toast.success(state.message || "Successfully signed up");
       router.push("/login");
       ref.current?.reset();
-    } else if (state?.message) {
+    } else if (state?.success === false && state?.message) {
       toast.error(state.message);
     }
   }, [state, ref, router]);
 
-  interface RegistrationFormData {
-    name: string;
-    education: string;
-    phone: string;
-    email: string;
-    password: string;
-    gender: string;
-    year: string;
-    current_status: string;
-  }
-
   interface FormErrors {
-    name?: string;
+    fullName?: string;
     education?: string;
+    currentStatus?: string;
+    courseName?: string;
     phone?: string;
     email?: string;
     password?: string;
     gender?: string;
     year?: string;
-    current_status?: string;
     qualification?: string;
   }
 
   const validateForm = (formData: RegistrationFormData): FormErrors => {
     const newErrors: FormErrors = {};
-    if (!formData.name) newErrors.name = "সম্পূর্ণ নাম প্রয়োজন";
+    if (!formData.fullName) newErrors.fullName = "সম্পূর্ণ নাম প্রয়োজন";
     if (!formData.education) newErrors.education = "শিক্ষার রুট নির্বাচন করুন";
-    if (!formData.current_status)
-      newErrors.current_status = "বর্তমান অবস্থা নির্বাচন করুন";
+    if (!formData.currentStatus)
+      newErrors.currentStatus = "বর্তমান অবস্থা নির্বাচন করুন";
     if (!formData.phone) {
       newErrors.phone = "মোবাইল নাম্বার প্রয়োজন";
     } else if (!/^\d{11,}$/.test(formData.phone)) {
       newErrors.phone = "মোবাইল নাম্বার কমপক্ষে ১১ ডিজিট";
     }
     if (!formData.email) newErrors.email = "ইমেইল প্রয়োজন";
+    if (!formData.courseName) newErrors.courseName = "কোর্সের নাম দিন";
     if (!formData.password) newErrors.password = "পাসওয়ার্ড প্রয়োজন";
     if (!formData.gender) newErrors.gender = "লিঙ্গ নির্বাচন করুন";
-    if (!formData.year) newErrors.year = "বয়স প্রয়োজন";
+    if (!formData.year) {
+      newErrors.year = "বয়স প্রয়োজন";
+    } else if (!/^\d{1,2}$/.test(formData.year)) {
+      newErrors.year = "বয়স সর্বোচ্চ ২ ডিজিট হতে পারে";
+    }
     return newErrors;
   };
-
   interface HandleSubmitEvent extends React.FormEvent<HTMLFormElement> {}
-
   const handleSubmit = (e: HandleSubmitEvent): void => {
     e.preventDefault();
     if (!ref.current) return;
@@ -91,13 +83,10 @@ const Registration = () => {
       new FormData(ref.current)
     ) as unknown as RegistrationFormData;
     const validationErrors = validateForm(formData);
-    console.log("validationErrors", formData);
-
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-
     setErrors({});
     const formDataObj = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
@@ -130,17 +119,40 @@ const Registration = () => {
             আপনার সঠিক তথ্য দিয়ে নিচের ফরমটি পূরণ করুন।
           </p>
           <form ref={ref} onSubmit={handleSubmit}>
+            <span>
+              <Select
+                label="কোর্সের নাম"
+                name="courseName"
+                className="w-full mt-2 bangla"
+              >
+                <SelectItem key="sohoj_quran">সহজ কুরআন শিক্ষা</SelectItem>
+              </Select>
+              {errors.currentStatus && (
+                <p className="text-red-500">{errors.courseName}</p>
+              )}
+            </span>
             <div className="lg:grid grid-cols-2 gap-2">
+              {/* Full Name Field */}
               <span>
                 <Input
-                  name="name"
+                  name="fullName"
                   className="mt-2"
-                  label="সম্পূর্ণ নাম"
+                  label="নিজের সম্পূর্ণ নাম"
                   type="text"
-                  errorMessage={errors.name}
+                  errorMessage={errors.fullName}
                 />
-                {errors.name && <p className="text-red-500">{errors.name}</p>}
+                {errors.fullName && (
+                  <p className="text-red-500">{errors.fullName}</p>
+                )}
               </span>
+              {/* role */}
+              <Input
+                name="role"
+                defaultValue="user"
+                type="text"
+                className="hidden"
+              />
+              {/* Education Field */}
               <span>
                 <Select
                   label="শিক্ষার রুট"
@@ -155,10 +167,12 @@ const Registration = () => {
                   <p className="text-red-500">{errors.education}</p>
                 )}
               </span>
+
+              {/* Current Status Field */}
               <span>
                 <Select
                   label="বর্তমান অবস্থা"
-                  name="current_status"
+                  name="currentStatus"
                   className="w-full mt-2 bangla"
                 >
                   <SelectItem key="reson-1">
@@ -171,10 +185,12 @@ const Registration = () => {
                     পড়তে পারি ,কিন্তু শুদ্ধ করে পড়তে পারিনা।
                   </SelectItem>
                 </Select>
-                {errors.current_status && (
-                  <p className="text-red-500">{errors.current_status}</p>
+                {errors.currentStatus && (
+                  <p className="text-red-500">{errors.currentStatus}</p>
                 )}
               </span>
+
+              {/* Qualification Field */}
               <span>
                 <Select
                   label="শিক্ষাগত যোগ্যতা"
@@ -193,6 +209,7 @@ const Registration = () => {
                 )}
               </span>
 
+              {/* Age and Gender Fields */}
               <div className="flex gap-2 lg:gap-2 justify-center items-center mt-2">
                 <Input
                   label="বয়স"
@@ -215,16 +232,20 @@ const Registration = () => {
                   <p className="text-red-500">{errors.year || errors.gender}</p>
                 )}
               </div>
+
+              {/* Phone Field */}
               <span>
                 <Input
                   className="mt-2 bangla"
                   name="phone"
-                  type="text"
+                  type="number"
                   label="মোবাইল নাম্বার"
                   errorMessage={errors.phone}
                 />
                 {errors.phone && <p className="text-red-500">{errors.phone}</p>}
               </span>
+
+              {/* Email Field */}
               <span>
                 <Input
                   className="mt-2 bangla"
@@ -235,6 +256,8 @@ const Registration = () => {
                 />
                 {errors.email && <p className="text-red-500">{errors.email}</p>}
               </span>
+
+              {/* Password Field */}
               <span>
                 <Input
                   className="mt-2"
@@ -248,7 +271,9 @@ const Registration = () => {
                 )}
               </span>
             </div>
-            <div className="mx-auto w-full">
+
+            {/* Submit Button */}
+            <div className="mx-auto w-full mt-2">
               <SubmitButton>ফরম জমা করুন</SubmitButton>
             </div>
           </form>

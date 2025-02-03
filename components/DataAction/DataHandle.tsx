@@ -3,106 +3,132 @@ import { authOptions } from "@/lib/authOptions";
 import { UserInfoByCookie } from "@/utils/Cookies";
 import { decodedDataByJwt } from "@/utils/jwt";
 import { getServerSession } from "next-auth/next";
+
 interface User {
   email: string;
   name: string;
   image?: string;
 }
-// for User Register
+
+// Register User
 export async function signUpUser(pre: FormData, fromData: FormData) {
   try {
     const formattedData = JSON.stringify(Object.fromEntries(fromData));
-    const res = await fetch(`${process.env.BASE_URL}/users/register`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: formattedData,
-    });
+    console.log("FormData:::::::", formattedData);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: formattedData,
+      }
+    );
+    console.log("Response:::::::", res);
     const data = await res.json();
     return data;
   } catch (error) {
     throw error;
   }
 }
-// for User Login
+
+// Login User
 export async function loginUser(pre: FormData, fromData: FormData) {
   try {
     const formattedData = JSON.stringify(Object.fromEntries(fromData));
-    const res = await fetch(`${process.env.BASE_URL}/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: formattedData,
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: formattedData,
+      }
+    );
     const data = await res.json();
-
     return data;
   } catch (error) {
     throw error;
   }
 }
-//  post mehtod
-export const Post = async (data: any, name: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}`, {
-    cache: "no-store",
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  return res.json();
-};
-//  Get mehtod
-export const Get = async (name: any, querydata: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}?${querydata}`, {
-    cache: "no-store",
-  });
-  return res.json();
-};
-//  Update mehtod
-export const Update = async (data: any, name: any, id: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
-    cache: "no-store",
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-    next: { revalidate: 10 },
-  });
-  if (!res.ok) {
-    throw new Error("Network response was not ok");
-  }
 
-  return res.json();
-};
-//Delete mehtod
-export const Delete = async (name: any, id: any) => {
-  const res = await fetch(`${process.env.BASE_URL}/${name}/${id}`, {
-    cache: "no-store",
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    next: { revalidate: 30 },
-  });
-  if (!res.ok) {
-    const errorDetails = await res.text();
-    throw new Error(`Network response was not ok: ${errorDetails}`);
+// Get Courses
+export const getCourses = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`, {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    throw error;
   }
-  return res.json();
 };
-// _________________________
+
+// Add Course
+export const addCourse = async (courseData: any) => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(courseData),
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Get Users (Admin)
+export const GetAllUsers = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Approve User (Admin)
+export const approveUser = async (userId: string) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/approve/${userId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Get User Information
 export async function userInformation(): Promise<User | null> {
   try {
     const AccessToken = await UserInfoByCookie("accessToken");
     if (AccessToken) {
       const decodedData = decodedDataByJwt(AccessToken) as User;
-      const user = await Get("users", `email=${decodedData?.email}`);
-      return user;
+      const user = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/users?email=${decodedData?.email}`,
+        {
+          cache: "no-store",
+        }
+      );
+      return user.json();
     } else {
       return null;
     }
@@ -110,7 +136,8 @@ export async function userInformation(): Promise<User | null> {
     throw error;
   }
 }
-// get user information
+
+// Get Session User Information
 export const UserInfo = async () => {
   const session = await getServerSession(authOptions);
   return session?.user;

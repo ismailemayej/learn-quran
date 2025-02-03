@@ -8,9 +8,10 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 
 // Component imports
-import { Providers } from "./providers";
+import { Providers } from "../components/providers";
 import { Navbar } from "@/components/navbar";
 import Top from "@/components/Top";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: {
@@ -44,6 +45,8 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        {" "}
+        <Toaster />
         <Top />
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">

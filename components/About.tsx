@@ -34,10 +34,10 @@ const About = () => {
           <Image
             alt="About us"
             className="rounded-lg shadow-xl dark:shadow-none object-cover"
-            height={400} // Adjust height
+            height={500}
             priority={true} // Ensure priority loading for LCP optimization
             src="/about-hero-image.jpg"
-            width={500} // Adjust width
+            width={500}
           />
         </div>
       </div>
