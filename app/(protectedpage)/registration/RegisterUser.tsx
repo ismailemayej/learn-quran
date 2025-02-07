@@ -8,7 +8,7 @@ import { useFormState } from "react-dom";
 import SubmitButton from "@/components/SubmitButtom";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { RegistrationFormData } from "@/types";
+import { UserInfo } from "@/types";
 import { signUpUser } from "@/app/api/Register";
 
 export const education = [
@@ -58,7 +58,7 @@ const Registration = () => {
     qualification?: string;
   }
 
-  const validateForm = (formData: RegistrationFormData): FormErrors => {
+  const validateForm = (formData: UserInfo): FormErrors => {
     const newErrors: FormErrors = {};
     if (!formData.fullName) newErrors.fullName = "সম্পূর্ণ নাম প্রয়োজন";
     if (!formData.education) newErrors.education = "শিক্ষার রুট নির্বাচন করুন";
@@ -86,7 +86,7 @@ const Registration = () => {
     if (!ref.current) return;
     const formData = Object.fromEntries(
       new FormData(ref.current)
-    ) as unknown as RegistrationFormData;
+    ) as unknown as UserInfo;
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);

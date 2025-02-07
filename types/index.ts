@@ -7,9 +7,8 @@ export interface User {
   _id: string;
   name: string;
   email: string;
-  isApproved: boolean;
 }
-export interface RegistrationFormData {
+export interface UserInfo {
   courseName: string;
   currentStatus: string;
   education: string;
@@ -23,6 +22,9 @@ export interface RegistrationFormData {
   year: string;
   batch?: string;
   approve?: boolean;
+  success?: boolean;
+  user?: User | null;
+  message?: string;
 }
 export interface FormErrors {
   fullName: string;

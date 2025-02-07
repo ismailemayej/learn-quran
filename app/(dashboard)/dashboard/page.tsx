@@ -1,9 +1,11 @@
-import UserList from "@/components/dashboard";
+import { userInformation } from "@/app/api/UserInformation";
+import UserDashboard from "./UserDashboard";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const { user } = await userInformation();
   return (
     <div>
-      <h2>User Dashboard</h2>
+      <UserDashboard userinfo={user} />
     </div>
   );
 }

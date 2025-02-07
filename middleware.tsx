@@ -17,9 +17,16 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const accessToken = await GetCookies("accessToken");
 
-  // If accessToken exists and the user accesses /login, redirect to home page
-  if (accessToken && pathname === "/login") {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+  // If accessToken exists and the user accesses /login or /register, redirect to respective dashboard
+  if (accessToken && AuthRoutes.includes(pathname)) {
+    const decodedData = jwtDecode<DecodedToken>(accessToken);
+    const role = decodedData?.role;
+
+    if (role === "admin") {
+      return NextResponse.redirect(new URL("/dashboard/admin", request.url));
+    } else if (role === "user") {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
   }
 
   // If no token and the route is public (login/register), allow access
@@ -45,6 +52,7 @@ export async function middleware(request: NextRequest) {
 
   if (role && roleBasedPrivateRoutes[role]) {
     const allowedRoutes = roleBasedPrivateRoutes[role];
+
     // Check if the pathname matches any allowed route for the role
     if (
       allowedRoutes.some((route) =>
@@ -53,14 +61,21 @@ export async function middleware(request: NextRequest) {
           : (route as RegExp).test(pathname)
       )
     ) {
-      return NextResponse.next(); // Allow access
+      return NextResponse.next();
+    } else {
+      // Redirect users to their default dashboard based on their role
+      if (role === "admin") {
+        return NextResponse.redirect(new URL("/dashboard/admin", request.url));
+      } else if (role === "user") {
+        return NextResponse.redirect(new URL("/dashboard", request.url));
+      }
     }
   }
 
-  // Redirect unauthorized access to "/"
-  return NextResponse.redirect(new URL("/", request.url));
+  // Redirect unauthorized access to "/login"
+  return NextResponse.redirect(new URL("/login", request.url));
 }
 
 export const config = {
-  matcher: ["/login", "/register", "/dashboard", "/dashboard/admin"], // Match these routes
+  matcher: ["/login", "/register", "/dashboard/:path*"], // Match these routes
 };
