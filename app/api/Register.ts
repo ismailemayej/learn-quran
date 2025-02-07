@@ -1,7 +1,9 @@
 import { apiClient } from "./baseUrl/BaseUrl";
+
 export async function signUpUser(pre: FormData, fromData: FormData) {
   try {
     const formattedData = Object.fromEntries(fromData.entries());
+    formattedData.approve = "false";
     const response = await apiClient.post(
       "/api/auth/register",
       JSON.stringify(formattedData),

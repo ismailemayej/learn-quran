@@ -10,16 +10,19 @@ export interface User {
   isApproved: boolean;
 }
 export interface RegistrationFormData {
-  fullName: string;
-  education: string;
-  currentStatus: string;
-  qualification: string;
-  year: string;
   courseName: string;
-  gender: string;
-  phone: string;
+  currentStatus: string;
+  education: string;
   email: string;
+  fullName: string;
+  gender: string;
   password: string;
+  phone: string;
+  qualification: string;
+  role: string;
+  year: string;
+  batch?: string;
+  approve?: boolean;
 }
 export interface FormErrors {
   fullName: string;

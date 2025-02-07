@@ -12,6 +12,7 @@ import { Providers } from "../components/providers";
 import { Navbar } from "@/components/navbar";
 import Top from "@/components/Top";
 import { Toaster } from "sonner";
+import { GetAllUsers } from "./api/AllUsers";
 
 export const metadata: Metadata = {
   title: {
@@ -46,7 +47,7 @@ export default function RootLayout({
         )}
       >
         {" "}
-        <Toaster />
+        <Toaster className="bangla" />
         <Top />
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">

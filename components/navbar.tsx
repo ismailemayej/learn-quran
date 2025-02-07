@@ -16,8 +16,21 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, Logo } from "@/components/icons";
-import ButtonA from "./button";
+import { GetAllUsers } from "@/app/api/AllUsers";
+
+import { useEffect, useState } from "react";
+
 export const Navbar = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const userData = await GetAllUsers();
+      setUser(userData);
+      console.log("user data", userData.users);
+    };
+    fetchUser();
+  }, []);
   const pathname = usePathname();
   const isActive = (href: string) => pathname === href; // Check if the link is active
   return (
@@ -64,6 +77,11 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="flex gap-4">
+          <NextLink href="/registration">
+            <button className="font-bold hover:bg-[#8bf303a4]  bg-[#8bf303da] px-4 py-1 rounded-br-2xl rounded-tl-2xl">
+              Apply Now
+            </button>
+          </NextLink>
           <Link
             isExternal
             aria-label="Github"
@@ -92,7 +110,11 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       <NavbarMenu className="bg-blue-800">
         <div className="mx-4 mt-6 flex flex-col gap-4">
-          <ButtonA link="/registration">Appy Now</ButtonA>
+          <NextLink href="/registration">
+            <button className="font-bold hover:bg-[#8bf303a4]  bg-[#8bf303da] px-4 py-1 rounded-br-2xl rounded-tl-2xl">
+              Apply Now
+            </button>
+          </NextLink>
           {siteConfig.navItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item.label}-${index}`}

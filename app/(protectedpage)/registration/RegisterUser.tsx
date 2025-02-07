@@ -31,12 +31,16 @@ const Registration = () => {
   const [state, fromAction] = useFormState(signUpUser, null);
   const [errors, setErrors] = useState<FormErrors>({});
   useEffect(() => {
-    if (state?.success === "success") {
-      toast.success(state.message || "Successfully signed up");
-      router.push("/login");
-      ref.current?.reset();
-    } else if (state?.success === false && state?.message) {
-      toast.error(state.message);
+    if (state) {
+      if (state.success === true) {
+        toast.success(state.message || "Successfully signed up");
+        router.push("/login");
+        if (ref.current) {
+          ref.current.reset();
+        }
+      } else if (state.success === false && state.message) {
+        toast.error(state.message); // Show error if message exists
+      }
     }
   }, [state, ref, router]);
 
@@ -50,6 +54,7 @@ const Registration = () => {
     password?: string;
     gender?: string;
     year?: string;
+    batch?: string;
     qualification?: string;
   }
 
@@ -89,6 +94,7 @@ const Registration = () => {
     }
     setErrors({});
     const formDataObj = new FormData();
+    console.log("form dataaaaaaaaaa:", formDataObj);
     Object.entries(formData).forEach(([key, value]) => {
       formDataObj.append(key, value as string);
     });
@@ -149,6 +155,12 @@ const Registration = () => {
               <Input
                 name="role"
                 defaultValue="user"
+                type="text"
+                className="hidden"
+              />
+              <Input
+                name="batch"
+                defaultValue="01"
                 type="text"
                 className="hidden"
               />

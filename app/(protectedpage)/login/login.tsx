@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@heroui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import login from "../../../public/Login-bro.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { SetCookies } from "@/utils/Cookies";
 import { loginUser } from "@/app/api/Login";
+
 export const Token = "accessToken";
 
 const SignIn = () => {
@@ -22,16 +23,31 @@ const SignIn = () => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    const formData = new FormData();
-    Object.keys(data).forEach((key) => formData.append(key, data[key]));
-    const response = await loginUser(data, formData);
-    if (response.success) {
-      SetCookies("accessToken", response.token);
-      toast.success("সফলভাবে প্রবেশ করেছেন");
-      reset();
-      router.push("/");
-    } else {
-      toast.error(response.message);
+    try {
+      // Convert the input data to FormData
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => formData.append(key, data[key]));
+
+      // Make the API call to log in the user
+      const response = await loginUser(data, formData);
+
+      console.log("Response:", response);
+      if (response?.success) {
+        SetCookies("accessToken", response.token);
+        toast.success(response.message || "Login successful!");
+        reset();
+        router.push("/dashboard");
+      } else {
+        // General login failure
+        toast.error(response.message || "Failed to log in. Please try again.");
+      }
+    } catch (error) {
+      // Handle unexpected errors
+      const errorMessage =
+        (error as any)?.response?.data?.message ||
+        "An unexpected error occurred. Please try again.";
+      console.error("Error during login:", error);
+      toast.error(errorMessage); // Show error toast
     }
   };
 
