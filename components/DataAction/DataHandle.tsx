@@ -1,6 +1,6 @@
 "use server";
 import { authOptions } from "@/lib/authOptions";
-import { UserInfoByCookie } from "@/utils/Cookies";
+import { GetCookies } from "@/utils/Cookies";
 import { decodedDataByJwt } from "@/utils/jwt";
 import { getServerSession } from "next-auth/next";
 
@@ -119,7 +119,7 @@ export const approveUser = async (userId: string) => {
 // Get User Information
 export async function userInformation(): Promise<User | null> {
   try {
-    const AccessToken = await UserInfoByCookie("accessToken");
+    const AccessToken = await GetCookies("accessToken");
     if (AccessToken) {
       const decodedData = decodedDataByJwt(AccessToken) as User;
       const user = await fetch(

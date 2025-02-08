@@ -1,22 +1,43 @@
 "use server";
 import { cookies } from "next/headers";
-// set Cookies
-export const SetCookies = async (key: string, value: string) => {
+import { redirect } from "next/navigation";
+
+// Set Cookie
+export const SetCookies = async (
+  key: string,
+  value: string,
+  options: { maxAge?: number; path?: string } = {}
+) => {
   const cookieStore = await cookies();
-  return cookieStore.set(key, value);
+  cookieStore.set(key, value, {
+    path: options.path || "/", // Default path is the root
+    maxAge: options.maxAge || 3600, // Default expiry is 1 hour
+  });
 };
-// user information
-export const GetCookies = async (key: string) => {
+
+// Get Cookie
+export const GetCookies = async (key: string): Promise<string | null> => {
   const cookieStore = await cookies();
-  return cookieStore.get(key)?.value;
+  const cookieValue = cookieStore.get(key)?.value;
+  return cookieValue || null;
 };
-// LogOut
+
+// Remove Cookie and Redirect to /login
 export const RemoveCookie = async (key: string) => {
   const cookieStore = await cookies();
-  const haveCookie = cookieStore.get(key);
-  if (haveCookie) {
-    return cookieStore.delete(key);
+  const existingCookie = cookieStore.get(key);
+
+  if (existingCookie) {
+    cookieStore.set(key, "", {
+      path: "/", // Ensure the same path is used as when the cookie was set
+      maxAge: 0, // Set the maxAge to 0 to delete the cookie
+    });
+
+    // Redirect to /login after removing the cookie
+    redirect("/login");
   } else {
-    console.log("there is no cookies");
+    console.log(`No cookie found with key: ${key}`);
+    // Redirect to /login even if the cookie doesn't exist
+    redirect("/login");
   }
 };

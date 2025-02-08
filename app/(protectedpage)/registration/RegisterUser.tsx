@@ -12,18 +12,18 @@ import { UserInfo } from "@/types";
 import { signUpUser } from "@/app/api/Register";
 
 export const education = [
-  { key: "one-five", label: "ওয়ান - ফাইভ" },
-  { key: "six-nine", label: "সিক্স-নাইন" },
-  { key: "ssc/dhakil", label: "এস,এস,সি/দাখিল" },
-  { key: "hsc/alim", label: "এইস,এস,সি/আলিম" },
-  { key: "digree/fazil", label: "ডিগ্রি/ফাযিল" },
-  { key: "hons", label: "অনার্স" },
-  { key: "masters", label: "মাস্টার্স" },
+  { key: "ওয়ান - ফাইভ", label: "ওয়ান - ফাইভ" },
+  { key: "সিক্স-নাইন", label: "সিক্স-নাইন" },
+  { key: "এস,এস,সি/দাখিল", label: "এস,এস,সি/দাখিল" },
+  { key: "এইস,এস,সি/আলিম", label: "এইস,এস,সি/আলিম" },
+  { key: "ডিগ্রি/ফাযিল", label: "ডিগ্রি/ফাযিল" },
+  { key: "অনার্স", label: "অনার্স" },
+  { key: "মাস্টার্স", label: "মাস্টার্স" },
 ];
 export const gender = [
-  { key: "Male", label: "ছেলে" },
-  { key: "Female", label: "মেয়ে" },
-  { key: "Other", label: "অন্যান্য" },
+  { key: "ছেলে", label: "ছেলে" },
+  { key: "মেয়ে", label: "মেয়ে" },
+  { key: "অন্যান্য", label: "অন্যান্য" },
 ];
 const Registration = () => {
   const router = useRouter();
@@ -131,7 +131,7 @@ const Registration = () => {
                 name="courseName"
                 className="w-full mt-2 bangla"
               >
-                <SelectItem key="sohoj_quran">সহজ কুরআন শিক্ষা</SelectItem>
+                <SelectItem key="সহজ কুরআন শিক্ষা">সহজ কুরআন শিক্ষা</SelectItem>
               </Select>
               {errors.currentStatus && (
                 <p className="text-red-500">{errors.courseName}</p>
@@ -172,8 +172,8 @@ const Registration = () => {
                   name="education"
                   errorMessage={errors.education}
                 >
-                  <SelectItem key="madrasha">মাদ্রাসা</SelectItem>
-                  <SelectItem key="school">স্কুল</SelectItem>
+                  <SelectItem key="মাদ্রাসা">মাদ্রাসা</SelectItem>
+                  <SelectItem key="স্কুল">স্কুল</SelectItem>
                 </Select>
                 {errors.education && (
                   <p className="text-red-500">{errors.education}</p>
@@ -187,13 +187,13 @@ const Registration = () => {
                   name="currentStatus"
                   className="w-full mt-2 bangla"
                 >
-                  <SelectItem key="reson-1">
+                  <SelectItem key="ছোট বেলায় শিখেছি এখন ভুলে গেছি।">
                     ছোট বেলায় শিখেছি এখন ভুলে গেছি।
                   </SelectItem>
-                  <SelectItem key="reson-2">
+                  <SelectItem key="কখনো কোন শিক্ষকের কাছে পড়ি নি।">
                     কখনো কোন শিক্ষকের কাছে পড়ি নি।
                   </SelectItem>
-                  <SelectItem key="reson-3">
+                  <SelectItem key="পড়তে পারি ,কিন্তু শুদ্ধ করে পড়তে পারিনা।">
                     পড়তে পারি ,কিন্তু শুদ্ধ করে পড়তে পারিনা।
                   </SelectItem>
                 </Select>

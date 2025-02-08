@@ -603,7 +603,7 @@
     "@react-aria/interactions" "3.22.5"
     "@react-aria/utils" "3.26.0"
 
-"@heroui/badge@2.2.6":
+"@heroui/badge@2.2.6", "@heroui/badge@^2.2.6":
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/@heroui/badge/-/badge-2.2.6.tgz#a3d6a3986218ac9f10475e420e60f4b27ba297fd"
   integrity sha512-jF04WHFEnND5ZLl361Di2BDWrWORpCZk2/0Le9U6Wbm11erSO13ChJnD0YdSeQ9+RTHJmxwyDr2o9GsX7Ks15g==
@@ -686,7 +686,7 @@
     "@types/lodash.debounce" "^4.0.7"
     scroll-into-view-if-needed "3.0.10"
 
-"@heroui/card@2.2.10":
+"@heroui/card@2.2.10", "@heroui/card@^2.2.10":
   version "2.2.10"
   resolved "https://registry.yarnpkg.com/@heroui/card/-/card-2.2.10.tgz#cae964bd48fbd6c3bb1745adf811b93926eb38b3"
   integrity sha512-VunP298v2FAtBg8U8ZLPIJUz4AIBSqjeaazVxGhN2ld3ipqygLNYCHRkG5UPwN1qYdsOEbx1ebMWgasPklwoLQ==
@@ -848,20 +848,6 @@
     "@react-stately/menu" "3.9.0"
     "@react-types/menu" "3.9.13"
 
-"@heroui/form@2.1.8":
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@heroui/form/-/form-2.1.8.tgz#e8330af878e38514da231331554917ceb38adcfe"
-  integrity sha512-lWQpOh4F2/TLngUy6gmxW86iRpp1YKnnGApct+UHAq0P/ZGlAk5lvu0oQPQWCOcOQXo/0SrY1ihNuwKvPB6t8g==
-  dependencies:
-    "@heroui/react-utils" "2.1.3"
-    "@heroui/shared-utils" "2.1.2"
-    "@heroui/system" "2.4.6"
-    "@heroui/theme" "2.4.5"
-    "@react-aria/utils" "3.26.0"
-    "@react-stately/form" "3.1.0"
-    "@react-types/form" "3.7.8"
-    "@react-types/shared" "3.26.0"
-
 "@heroui/form@2.1.9", "@heroui/form@^2.1.9":
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/@heroui/form/-/form-2.1.9.tgz#5ac7a2243d6eedff7f1b1119af82f47b07925104"
@@ -919,7 +905,7 @@
     "@react-types/textfield" "3.10.0"
     input-otp "1.4.1"
 
-"@heroui/input@2.4.10":
+"@heroui/input@2.4.10", "@heroui/input@^2.4.10":
   version "2.4.10"
   resolved "https://registry.yarnpkg.com/@heroui/input/-/input-2.4.10.tgz#1771c2d7625f96ebd226f18ee0c30ca33ff6f6b3"
   integrity sha512-cHKgDiNq6ppe71epBqpiaHxH8CbIZ9uPTvzSEgSsYaDhI6vos7fNAUkpLwQyp8yAPOQBHO4RHSYDKYTOhyGsIg==
@@ -929,25 +915,6 @@
     "@heroui/shared-icons" "2.1.2"
     "@heroui/shared-utils" "2.1.3"
     "@heroui/use-safe-layout-effect" "2.1.2"
-    "@react-aria/focus" "3.19.0"
-    "@react-aria/interactions" "3.22.5"
-    "@react-aria/textfield" "3.15.0"
-    "@react-aria/utils" "3.26.0"
-    "@react-stately/utils" "3.10.5"
-    "@react-types/shared" "3.26.0"
-    "@react-types/textfield" "3.10.0"
-    react-textarea-autosize "^8.5.3"
-
-"@heroui/input@2.4.9":
-  version "2.4.9"
-  resolved "https://registry.yarnpkg.com/@heroui/input/-/input-2.4.9.tgz#7c55646b44788939ba3358e977b4d53aad389ccf"
-  integrity sha512-VssN+b0p85DB1nCtuFWT4IlKS2Ot8a5ljR+oynK4B88DyOI6gp3ow66HB9BS2Gli03RU5NIQ2N8bj//eBJLeBw==
-  dependencies:
-    "@heroui/form" "2.1.8"
-    "@heroui/react-utils" "2.1.3"
-    "@heroui/shared-icons" "2.1.1"
-    "@heroui/shared-utils" "2.1.2"
-    "@heroui/use-safe-layout-effect" "2.1.1"
     "@react-aria/focus" "3.19.0"
     "@react-aria/interactions" "3.22.5"
     "@react-aria/textfield" "3.15.0"
@@ -1495,7 +1462,7 @@
     "@react-stately/utils" "3.10.5"
     "@react-types/datepicker" "3.9.0"
 
-"@heroui/table@2.2.9":
+"@heroui/table@2.2.9", "@heroui/table@^2.2.9":
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/@heroui/table/-/table-2.2.9.tgz#46e496dc6af5965e178f201ec6e66799f6299bda"
   integrity sha512-tke+0bv1kUe4udLQVPXt+hfDKgUDq0YCR3yfx0UtchSgdvTsTQA+MhHBmiIvdR9E9jtGvMi+N7rvUuYZ6mBxaA==
@@ -2180,6 +2147,50 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
+
+"@radix-ui/react-avatar@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-avatar/-/react-avatar-1.1.3.tgz#8de2bcebdc38fbe14e952ccacf05ba2cb426bd83"
+  integrity sha512-Paen00T4P8L8gd9bNsRMw7Cbaz85oxiv+hzomsRZgFm2byltPFDtfcoqlWJ8GyZlIBWgLssJlzLCnKU0G0302g==
+  dependencies:
+    "@radix-ui/react-context" "1.1.1"
+    "@radix-ui/react-primitive" "2.0.2"
+    "@radix-ui/react-use-callback-ref" "1.1.0"
+    "@radix-ui/react-use-layout-effect" "1.1.0"
+
+"@radix-ui/react-compose-refs@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.1.tgz#6f766faa975f8738269ebb8a23bad4f5a8d2faec"
+  integrity sha512-Y9VzoRDSJtgFMUCoiZBDVo084VQ5hfpXxVE+NgkdNsjiDBByiImMZKKhxMwCbdHvhlENG6a833CbFkOQvTricw==
+
+"@radix-ui/react-context@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-context/-/react-context-1.1.1.tgz#82074aa83a472353bb22e86f11bcbd1c61c4c71a"
+  integrity sha512-UASk9zi+crv9WteK/NU4PLvOoL3OuE6BWVKNF6hPRBtYBDXQ2u5iu3O59zUlJiTVvkyuycnqrztsHVJwcK9K+Q==
+
+"@radix-ui/react-primitive@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-2.0.2.tgz#ac8b7854d87b0d7af388d058268d9a7eb64ca8ef"
+  integrity sha512-Ec/0d38EIuvDF+GZjcMU/Ze6MxntVJYO/fRlCPhCaVUyPY9WTalHJw54tp9sXeJo3tlShWpy41vQRgLRGOuz+w==
+  dependencies:
+    "@radix-ui/react-slot" "1.1.2"
+
+"@radix-ui/react-slot@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.1.2.tgz#daffff7b2bfe99ade63b5168407680b93c00e1c6"
+  integrity sha512-YAKxaiGsSQJ38VzKH86/BPRC4rh+b1Jpa+JneA5LRE7skmLPNAyeG8kPJj/oo4STLvlrs8vkf/iYyc3A5stYCQ==
+  dependencies:
+    "@radix-ui/react-compose-refs" "1.1.1"
+
+"@radix-ui/react-use-callback-ref@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.0.tgz#bce938ca413675bc937944b0d01ef6f4a6dc5bf1"
+  integrity sha512-CasTfvsy+frcFkbXtSJ2Zu9JHpN8TYKxkgJGWbjiZhFivxaeW7rMeZt7QELGVLaYVfFMsKHjb7Ak0nMEe+2Vfw==
+
+"@radix-ui/react-use-layout-effect@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.0.tgz#3c2c8ce04827b26a39e442ff4888d9212268bd27"
+  integrity sha512-+FPE0rOdziWSrH9athwI1R0HDVbWlEhd+FR+aSDk4uWGmSJ9Z54sdZVDQPZAinJhJXwfT+qnj969mCsT2gfm5w==
 
 "@react-aria/breadcrumbs@3.5.19":
   version "3.5.19"
@@ -4113,6 +4124,13 @@ chokidar@^3.6.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
+class-variance-authority@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/class-variance-authority/-/class-variance-authority-0.7.1.tgz#4008a798a0e4553a781a57ac5177c9fb5d043787"
+  integrity sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==
+  dependencies:
+    clsx "^2.1.1"
+
 client-only@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"
@@ -5578,6 +5596,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lucide-react@^0.475.0:
+  version "0.475.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.475.0.tgz#4b7b62c024f153ee4b52a6a0f33f9e72f07156f0"
+  integrity sha512-NJzvVu1HwFVeZ+Gwq2q00KygM1aBhy/ZrhY9FsAgJtpB+E4R7uxRk9M2iKvHa6/vNxZydIB59htha4c2vvwvVg==
+
 math-intrinsics@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/math-intrinsics/-/math-intrinsics-1.1.0.tgz#a0dd74be81e2aa5c2f27e65ce283605ee4e2b7f9"
@@ -6412,7 +6435,7 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sonner@^1.7.2:
+sonner@^1.7.4:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/sonner/-/sonner-1.7.4.tgz#4c39820db86623800a17115c8970796aa862133a"
   integrity sha512-DIS8z4PfJRbIyfVFDVnK9rO3eYDtse4Omcm6bt0oEr5/jtLgysmjuBl1frJ9E/EQZrFmKx2A8m/s5s9CRXIzhw==
@@ -6587,10 +6610,15 @@ tailwind-merge@^1.14.0:
   resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.14.0.tgz#e677f55d864edc6794562c63f5001f45093cdb8b"
   integrity sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==
 
-tailwind-merge@^2.5.2, tailwind-merge@^2.6.0:
+tailwind-merge@^2.5.2:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-2.6.0.tgz#ac5fb7e227910c038d458f396b7400d93a3142d5"
   integrity sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==
+
+tailwind-merge@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-3.0.1.tgz#0f0189966511ebcd63ef98d9eaf5607beb0d59d3"
+  integrity sha512-AvzE8FmSoXC7nC+oU5GlQJbip2UO7tmOhOfQyOmPhrStOGXHU08j8mZEHZ4BmCqY5dWTCo4ClWkNyRNx1wpT0g==
 
 tailwind-variants@0.1.20, tailwind-variants@^0.1.20:
   version "0.1.20"
@@ -6598,6 +6626,11 @@ tailwind-variants@0.1.20, tailwind-variants@^0.1.20:
   integrity sha512-AMh7x313t/V+eTySKB0Dal08RHY7ggYK0MSn/ad8wKWOrDUIzyiWNayRUm2PIJ4VRkvRnfNuyRuKbLV3EN+ewQ==
   dependencies:
     tailwind-merge "^1.14.0"
+
+tailwindcss-animate@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/tailwindcss-animate/-/tailwindcss-animate-1.0.7.tgz#318b692c4c42676cc9e67b19b78775742388bef4"
+  integrity sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==
 
 tailwindcss@3.4.16:
   version "3.4.16"

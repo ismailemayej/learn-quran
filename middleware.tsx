@@ -49,6 +49,7 @@ export async function middleware(request: NextRequest) {
   }
 
   const role = decodedData?.role;
+  console.log("role:", role);
 
   if (role && roleBasedPrivateRoutes[role]) {
     const allowedRoutes = roleBasedPrivateRoutes[role];
@@ -77,5 +78,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/:path*"], // Match these routes
+  matcher: ["/login", "/register", "/dashboard/admin"], // Match these routes
 };

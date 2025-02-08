@@ -31,7 +31,6 @@ const SignIn = () => {
       // Make the API call to log in the user
       const response = await loginUser(data, formData);
 
-      console.log("Response:", response);
       if (response?.success) {
         SetCookies("accessToken", response.token);
         toast.success(response.message || "Login successful!");
@@ -47,12 +46,12 @@ const SignIn = () => {
         (error as any)?.response?.data?.message ||
         "An unexpected error occurred. Please try again.";
       console.error("Error during login:", error);
-      toast.error(errorMessage); // Show error toast
+      toast.error(errorMessage);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bangla">
+    <div className="flex items-center justify-center bangla">
       <div className="border border-green-300 text-center align-middle lg:max-w-5xl grid lg:grid-cols-2 gap-10 bg-white rounded-xl shadow-xl overflow-hidden">
         {/* Left Side (Image) */}
         <div className="hidden lg:flex justify-center items-center bg-gradient-to-br from-green-200 to-green-500">
