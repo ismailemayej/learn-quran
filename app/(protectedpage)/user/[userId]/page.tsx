@@ -2,7 +2,13 @@ import { apiClient } from "@/app/api/baseUrl/BaseUrl";
 import React from "react";
 import UserDetailsPage from "./details";
 
-const UserDetails = async ({ params }: { params: { userId: string } }) => {
+interface UserDetailsProps {
+  params: {
+    userId: string;
+  };
+}
+
+const UserDetails = async ({ params }: UserDetailsProps) => {
   try {
     const response = await apiClient.get(`/api/users?email=${params.userId}`, {
       headers: {

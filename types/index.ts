@@ -22,8 +22,10 @@ export interface UserInfo {
   year: string;
   batch?: string;
   approve?: boolean;
+  studentId?: string;
+  maritalstatus?: string;
   success?: boolean;
-  user?: User | null;
+
   message?: string;
 }
 export interface FormErrors {

@@ -30,6 +30,7 @@ const Registration = () => {
   const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(signUpUser, null);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [student, setStudent] = useState<string>("");
   useEffect(() => {
     if (state) {
       if (state.success === true) {
@@ -56,6 +57,7 @@ const Registration = () => {
     year?: string;
     batch?: string;
     qualification?: string;
+    maritalstatus?: string;
   }
 
   const validateForm = (formData: UserInfo): FormErrors => {
@@ -63,7 +65,9 @@ const Registration = () => {
     if (!formData.fullName) newErrors.fullName = "সম্পূর্ণ নাম প্রয়োজন";
     if (!formData.education) newErrors.education = "শিক্ষার রুট নির্বাচন করুন";
     if (!formData.currentStatus)
-      newErrors.currentStatus = "বর্তমান অবস্থা নির্বাচন করুন";
+      newErrors.currentStatus = " বৈবাহিক অবস্থা নির্বাচন করুন";
+    if (!formData.maritalstatus)
+      newErrors.maritalstatus = "বর্তমান অবস্থা নির্বাচন করুন";
     if (!formData.phone) {
       newErrors.phone = "মোবাইল নাম্বার প্রয়োজন";
     } else if (!/^\d{11,}$/.test(formData.phone)) {
@@ -84,20 +88,30 @@ const Registration = () => {
   const handleSubmit = (e: HandleSubmitEvent): void => {
     e.preventDefault();
     if (!ref.current) return;
+
     const formData = Object.fromEntries(
       new FormData(ref.current)
     ) as unknown as UserInfo;
+
+    // Generate a random 3-digit ID
+    const randomId = Math.floor(100 + Math.random() * 900);
+
+    // Add the random ID to the form data (e.g., as a `userId` field)
+    formData.studentId = `student-${randomId}`;
+
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
+
     setErrors({});
     const formDataObj = new FormData();
-    console.log("form dataaaaaaaaaa:", formDataObj);
     Object.entries(formData).forEach(([key, value]) => {
       formDataObj.append(key, value as string);
     });
+
+    console.log("Form data with random ID:", formData);
     fromAction(formDataObj);
   };
 
@@ -125,7 +139,7 @@ const Registration = () => {
             আপনার সঠিক তথ্য দিয়ে নিচের ফরমটি পূরণ করুন।
           </p>
           <form ref={ref} onSubmit={handleSubmit}>
-            <span>
+            <div className="flex gap-2">
               <Select
                 label="কোর্সের নাম"
                 name="courseName"
@@ -136,9 +150,23 @@ const Registration = () => {
               {errors.currentStatus && (
                 <p className="text-red-500">{errors.courseName}</p>
               )}
-            </span>
+              {/* Education Field */}
+
+              <Select
+                label="শিক্ষার রুট"
+                className="w-full mt-2 bangla"
+                name="education"
+                errorMessage={errors.education}
+              >
+                <SelectItem key="মাদ্রাসা">মাদ্রাসা</SelectItem>
+                <SelectItem key="স্কুল">স্কুল</SelectItem>
+              </Select>
+              {errors.education && (
+                <p className="text-red-500">{errors.education}</p>
+              )}
+            </div>
+            {/* Full Name Field */}
             <div className="lg:grid grid-cols-2 gap-2">
-              {/* Full Name Field */}
               <span>
                 <Input
                   name="fullName"
@@ -151,6 +179,17 @@ const Registration = () => {
                   <p className="text-red-500">{errors.fullName}</p>
                 )}
               </span>
+              {/* Phone Field */}
+              <span>
+                <Input
+                  className="mt-2 bangla"
+                  name="phone"
+                  type="number"
+                  label="মোবাইল নাম্বার"
+                  errorMessage={errors.phone}
+                />
+                {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+              </span>
               {/* role */}
               <Input
                 name="role"
@@ -158,27 +197,13 @@ const Registration = () => {
                 type="text"
                 className="hidden"
               />
+
               <Input
                 name="batch"
                 defaultValue="01"
                 type="text"
                 className="hidden"
               />
-              {/* Education Field */}
-              <span>
-                <Select
-                  label="শিক্ষার রুট"
-                  className="w-full mt-2 bangla"
-                  name="education"
-                  errorMessage={errors.education}
-                >
-                  <SelectItem key="মাদ্রাসা">মাদ্রাসা</SelectItem>
-                  <SelectItem key="স্কুল">স্কুল</SelectItem>
-                </Select>
-                {errors.education && (
-                  <p className="text-red-500">{errors.education}</p>
-                )}
-              </span>
 
               {/* Current Status Field */}
               <span>
@@ -244,19 +269,19 @@ const Registration = () => {
                   <p className="text-red-500">{errors.year || errors.gender}</p>
                 )}
               </div>
-
-              {/* Phone Field */}
               <span>
-                <Input
-                  className="mt-2 bangla"
-                  name="phone"
-                  type="number"
-                  label="মোবাইল নাম্বার"
-                  errorMessage={errors.phone}
-                />
-                {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+                <Select
+                  label="বৈবাহিক অবস্থা"
+                  name="maritalstatus"
+                  className="w-full mt-2 bangla"
+                >
+                  <SelectItem key="বিবাহিত">বিবাহিত</SelectItem>
+                  <SelectItem key="অবিবাহিত">অবিবাহিত</SelectItem>
+                </Select>
+                {errors.maritalstatus && (
+                  <p className="text-red-500">{errors.maritalstatus}</p>
+                )}
               </span>
-
               {/* Email Field */}
               <span>
                 <Input
@@ -305,5 +330,4 @@ const Registration = () => {
     </div>
   );
 };
-
 export default Registration;

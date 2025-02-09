@@ -19,16 +19,23 @@ const UserDetailsPage = ({ userInfo }: { userInfo: any }) => {
     <div className=" bangla min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8">
       <Card className="max-w-4xl mx-auto overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8">
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-24 w-24 border-4 border-white shadow-lg">
-              <AvatarImage src={userInfo.avatarUrl} alt={userInfo.fullName} />
-              <AvatarFallback>{userInfo.fullName.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <div>
-              <CardTitle className="text-3xl font-bold">
-                {userInfo.fullName}
-              </CardTitle>
-              <p className="text-blue-100">{userInfo.email}</p>
+          <div className="flex justify-between">
+            <div className="flex items-center space-x-4">
+              <Avatar className="h-24 w-24 border-4 lg:text-xl border-white shadow-lg">
+                <AvatarImage src={userInfo.avatarUrl} alt={userInfo.fullName} />
+                <AvatarFallback>{userInfo.fullName.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <div>
+                <CardTitle className="text-3xl font-bold">
+                  {userInfo.fullName}
+                </CardTitle>
+                <p className="text-blue-100">{userInfo.email}</p>
+              </div>
+            </div>
+            <div className="lg:text-xl text-sm">
+              <p className=" lg:bg-slate-200 lg:text-blue-800 px-2 py-1 rounded-xl justify-center">
+                ID:{userInfo?.studentId}
+              </p>
             </div>
           </div>
         </CardHeader>
@@ -60,8 +67,14 @@ const UserDetailsPage = ({ userInfo }: { userInfo: any }) => {
                   value={userInfo.gender}
                 />
                 <InfoItem
+                  icon={<User className="text-blue-500" />}
+                  label="Marital Status"
+                  value={userInfo?.maritalstatus}
+                />
+
+                <InfoItem
                   icon={<Calendar className="text-blue-500" />}
-                  label="Year (Age)"
+                  label="Age"
                   value={userInfo.year}
                 />
               </div>
