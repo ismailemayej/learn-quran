@@ -32,7 +32,6 @@ export async function signUpUser(pre: FormData, fromData: FormData) {
     throw error;
   }
 }
-
 // Login User
 export async function loginUser(pre: FormData, fromData: FormData) {
   try {

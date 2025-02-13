@@ -5,8 +5,35 @@ import { useTheme } from "next-themes";
 import clsx from "clsx";
 
 export default function CourseDetails() {
-  const { theme } = useTheme();
+  const questionsAndAnswers = [
+    {
+      question: "১. কোরআন শিখতে কত সময় লাগবে?",
+      answer:
+        "কোরআন শিখতে সময়কাল অনেক কিছুই নির্ভর করে ব্যক্তির উপযোগিতা এবং অধ্যবসায়ের ওপর। কিছু শিক্ষার্থী এক বছরের মধ্যে পুরো কোরআন শিখতে পারেন, কিন্তু অধিকাংশ সময় প্রায় ২-৩ বছর সময় লাগে। তবে নিয়মিত অধ্যায়ন এবং মনোযোগী প্রচেষ্টা দিয়ে শিখতে পারবেন।",
+    },
+    {
+      question: "২. কোরআন পড়ার সঠিক নিয়ম কী?",
+      answer:
+        "কোরআন সঠিকভাবে পড়ার জন্য তাজওয়িদ শাস্ত্র অনুসরণ করা জরুরি। এর মধ্যে সঠিক উচ্চারণ এবং ধ্বনি সহ আয়াত পড়া হয়, যা মুসলিমদের জন্য অত্যন্ত গুরুত্বপূর্ণ। আপনাদের সঠিক তেলোয়াত শেখানোর জন্য আমি সাহায্য করতে প্রস্তুত।",
+    },
+    {
+      question: "৩. কোরআন শিখতে কতদিন সময় দিতে হবে প্রতিদিন?",
+      answer:
+        "আপনার শেখার গতি এবং সময়ের প্রতি গুরুত্ব দেওয়ার ওপর নির্ভর করে। সাধারণত প্রতিদিন ৩০ মিনিট থেকে ১ ঘণ্টা পড়ালেখা করলে ভাল ফলাফল পাওয়া যায়। তবে আপনি যে সময়টা দিতে পারেন, তা নিশ্চিত করুন যেন নিয়মিত প্র্যাকটিস করতে পারেন।",
+    },
+    {
+      question: "৪. কোরআন শিখতে কি কোনো বিশেষ প্রস্তুতি প্রয়োজন?",
+      answer:
+        "কোরআন শিখতে আগ্রহ এবং মনোযোগী মনোভাব সবচেয়ে গুরুত্বপূর্ণ। আপনি যদি সঠিক মনোভাব নিয়ে কোরআন শিখতে শুরু করেন, তবে কোনো বিশেষ প্রস্তুতির প্রয়োজন নেই। তবে, তাজওয়িদ এবং নিয়মিত অধ্যায়ন সঠিক শেখার জন্য অপরিহার্য।",
+    },
+    {
+      question: "৫. কোরআন শিখতে কি কোনো বয়সের সীমা রয়েছে?",
+      answer:
+        "কোরআন শেখার কোনো বয়সের সীমা নেই। আপনি যে বয়সেই কোরআন শিখতে শুরু করুন, তাতে কোনো সমস্যা নেই। যত দ্রুত শুরু করবেন, তত দ্রুত শিখতে পারবেন। শিখতে আগ্রহী হলে যে কোনো বয়সেই কোরআন শেখা সম্ভব।",
+    },
+  ];
 
+  const { theme } = useTheme();
   const isDarkTheme = theme === "dark";
 
   return (
@@ -24,50 +51,19 @@ export default function CourseDetails() {
         )}
         variant="bordered"
       >
-        <AccordionItem
-          className={clsx(
-            "rounded-md transition-colors",
-            isDarkTheme ? "text-gray-300 " : "text-gray-900 bg-white"
-          )}
-          key="1"
-          aria-label="Accordion 1"
-          title="কোরআন শিখতে কি ধরনের প্রস্তুতি প্রয়োজন?"
-        >
-          <p className="text-lg">
-            কোরআন শিখতে প্রথমে আধ্যাত্মিক প্রস্তুতি প্রয়োজন। এছাড়াও শুদ্ধভাবে
-            উচ্চারণ (তাজউইদ) শেখা, নিয়মিত অধ্যয়ন এবং অধ্যবসায়ের জন্য মনোযোগী
-            হওয়া দরকার।
-          </p>
-        </AccordionItem>
-        <AccordionItem
-          className={clsx(
-            "rounded-md transition-colors",
-            isDarkTheme ? "text-gray-300 " : "text-gray-900 bg-white"
-          )}
-          key="2"
-          aria-label="Accordion 2"
-          title="কোরআন শিক্ষা শুরু করার উপযুক্ত বয়স কত?"
-        >
-          <p className="text-lg">
-            কোরআন শিক্ষা শুরু করার জন্য কোনো নির্দিষ্ট বয়স নেই। যে কোনো বয়সে
-            কোরআন শেখা শুরু করা যেতে পারে, তবে শিশুদের জন্য তাজউইদসহ শুদ্ধভাবে
-            শিখে বড়রা আরও কার্যকর হতে পারেন।
-          </p>
-        </AccordionItem>
-        <AccordionItem
-          className={clsx(
-            "rounded-md transition-colors",
-            isDarkTheme ? "text-gray-300 " : "text-gray-900 bg-white"
-          )}
-          key="3"
-          aria-label="Accordion 3"
-          title="কোরআন শেখার জন্য কি কোনো বিশেষ কোর্সের প্রয়োজন?"
-        >
-          <p className="text-lg">
-            হ্যাঁ, শুদ্ধভাবে কোরআন শিক্ষা লাভের জন্য তাজউইদ এবং আছান পড়ার কোর্স
-            নিতে পারেন। তবে, এটি ব্যক্তিগত ইচ্ছা ও সময়ের ওপর নির্ভরশীল।
-          </p>
-        </AccordionItem>
+        {questionsAndAnswers.map((qa, index) => (
+          <AccordionItem
+            className={clsx(
+              "rounded-md transition-colors",
+              isDarkTheme ? "text-gray-300" : "text-gray-900"
+            )}
+            key={index} // Using index as the key for list items
+            aria-label={`Accordion ${index + 1}`}
+            title={qa.question}
+          >
+            <p className="text-lg">{qa.answer}</p>
+          </AccordionItem>
+        ))}
       </Accordion>
     </div>
   );

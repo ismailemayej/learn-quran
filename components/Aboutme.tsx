@@ -22,14 +22,18 @@ const AboutMe = () => {
         {/* Right Content */}
         <div className="flex-grow text-center lg:text-left">
           <h1 className="text-3xl md:text-4xl font-bold mb-6">ইনিস্ট্রাক্টর</h1>
-          <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8 line-clamp-6 ">
-            আমি মোঃ ইসমাইল হোসেন । আমি আপনাদের পবিত্র আল-কুরআন শিখানোর জন্য এই
-            ওয়েবসাইট তৈরি করেছি। আমাদের এই ওয়েবসাইটে আপনি পবিত্র আল-কুরআন শিখতে
-            পারবেন সহজে ও সৌন্দর্যে। আমাদের এই ওয়েবসাইটে আপনি পবিত্র আল-কুরআন
-            শিখতে পারবেন সহজে ও সৌন্দর্যে। আমাদের এই ওয়েবসাইটে আপনি পবিত্র
-            আল-কুরআন শিখতে পারবেন।
+          <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            আমি মোঃ ইসমাইল হোসেন। পবিত্র কোরআন সহিহভাবে তেলোয়াতের জন্যে বহুদিন
+            ধরে প্রচেষ্টা চালিয়ে যাচ্ছি। আমি আরবি বিশ্ববিদ্যালয় থেকে মাস্টার্স
+            শেষ করেছি এবং পবিত্র কোরআন শিখানোর জন্যে আমার ৪ বছরের অভিজ্ঞতা
+            রয়েছে। কোরআন শিখানো আমার জীবনের অন্যতম মহৎ কাজ, এবং আমি সবসময় চেষ্টা
+            করি যেন শিক্ষার্থীরা সঠিকভাবে কোরআন শিখতে ও জানতে...
           </p>
-          <ButtonA className="px-5 py-2 hover:bg-[#dfaf569a]" link="/about">
+
+          <ButtonA
+            className="px-5 py-2 hover:bg-[#dfaf569a]"
+            link="/instractor"
+          >
             আরও জানুন
           </ButtonA>
         </div>
