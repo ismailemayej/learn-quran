@@ -49,7 +49,7 @@ export default function RootLayout({
         {" "}
         <Toaster className="bangla" />
         <Top />
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className=" mx-auto  pt-6 container lg:px-0 px-3 flex-grow">

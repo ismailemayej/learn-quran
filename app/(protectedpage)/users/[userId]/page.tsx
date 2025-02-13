@@ -1,14 +1,8 @@
-import { apiClient } from "@/app/api/baseUrl/BaseUrl";
 import React from "react";
+import { apiClient } from "@/app/api/baseUrl/BaseUrl";
 import UserDetailsPage from "./details";
 
-interface UserDetailsProps {
-  params: {
-    userId: string;
-  };
-}
-
-const UserDetails = async ({ params }: UserDetailsProps) => {
+const UserDetails = async ({ params }: any) => {
   try {
     const response = await apiClient.get(`/api/users?email=${params.userId}`, {
       headers: {
@@ -21,11 +15,9 @@ const UserDetails = async ({ params }: UserDetailsProps) => {
     console.error("Error fetching user details:", error);
     return (
       <div>
-        <h1>Details Page</h1>
         <p>Failed to load user details.</p>
       </div>
     );
   }
 };
-
 export default UserDetails;
