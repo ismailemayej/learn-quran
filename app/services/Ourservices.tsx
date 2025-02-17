@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
-export const Services = ({
+export const AllServices = ({
   items,
   className,
 }: {
@@ -20,12 +20,13 @@ export const Services = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10 shadow-xl rounded-lg",
+        " bangla grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10 shadow-xl rounded-lg",
         className
       )}
     >
       {items.map((item, idx) => (
-        <div
+        <Link
+          href=""
           key={item?.link}
           className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
@@ -34,7 +35,7 @@ export const Services = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-300 dark:bg-slate-800/[0.8] block rounded-3xl"
+                className="absolute dark:bg-slate-800/[0.8] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -49,17 +50,13 @@ export const Services = ({
             )}
           </AnimatePresence>
           <Card>
-            <p className="flex gap-3 items-center">
+            <p className="flex gap-3">
               <CardIcon>{idx + 1}</CardIcon>
-              <Link href="/services">
-                <CardTitle className=" hover:text-green-500 ">
-                  {item.title}
-                </CardTitle>
-              </Link>
+              <CardTitle>{item.title}</CardTitle>
             </p>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-        </div>
+        </Link>
       ))}
     </div>
   );
@@ -75,7 +72,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-2 overflow-hidden bg-white dark:bg-slate-800 border border-gray-200 dark:border-white/[0.2] shadow-md hover:shadow-lg dark:shadow-none group-hover:border-gray-300 dark:group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-white dark:bg-slate-800 border border-gray-200 dark:border-white/[0.2] shadow-md hover:shadow-lg dark:shadow-none group-hover:border-gray-300 dark:group-hover:border-slate-700 relative z-20",
         className
       )}
     >
@@ -115,7 +112,7 @@ export const CardTitle = ({
   return (
     <h4
       className={cn(
-        "text-gray-900 dark:text-zinc-100 lg:text-2xl text-lg font-bold tracking-wide mt-4",
+        "text-gray-900 dark:text-zinc-100 lg:text-xl text-lg font-bold tracking-wide mt-4",
         className
       )}
     >
@@ -134,7 +131,7 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        "mt-4 text-gray-600 line-clamp-3 dark:text-zinc-400 lg:text-lg text-md tracking-wide leading-relaxed text-sm",
+        "mt-4 text-gray-600  dark:text-zinc-400 lg:text-lg text-md tracking-wide leading-relaxed text-sm",
         className
       )}
     >

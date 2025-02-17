@@ -10,73 +10,66 @@ const roleBasedPrivateRoutes = {
 type Role = keyof typeof roleBasedPrivateRoutes;
 
 interface DecodedToken extends JwtPayload {
-  role: Role;
+  role?: Role;
 }
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const accessToken = await GetCookies("accessToken");
 
-  // If accessToken exists and the user accesses /login or /register, redirect to respective dashboard
+  // 🔹 If user is already logged in, prevent access to login/register
   if (accessToken && AuthRoutes.includes(pathname)) {
-    const decodedData = jwtDecode<DecodedToken>(accessToken);
-    const role = decodedData?.role;
+    try {
+      const decodedData = jwtDecode<DecodedToken>(accessToken);
+      const role = decodedData?.role;
 
-    if (role === "admin") {
-      return NextResponse.redirect(new URL("/dashboard/admin", request.url));
-    } else if (role === "user") {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      if (!role) {
+        return NextResponse.redirect(new URL("/", request.url)); // Redirect to home if role is missing
+      }
+
+      const redirectPath = role === "admin" ? "/dashboard/admin" : "/dashboard";
+      return NextResponse.redirect(new URL(redirectPath, request.url));
+    } catch (error) {
+      console.error("Invalid token:", error);
+      return NextResponse.redirect(new URL("/login", request.url));
     }
   }
 
-  // If no token and the route is public (login/register), allow access
+  // 🔹 If no token & public route (login/register), allow access
   if (!accessToken) {
-    if (AuthRoutes.includes(pathname)) {
-      return NextResponse.next();
-    } else {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
+    return AuthRoutes.includes(pathname)
+      ? NextResponse.next()
+      : NextResponse.redirect(new URL("/login", request.url));
   }
 
   let decodedData: DecodedToken | null = null;
 
   try {
-    // Decode the token
     decodedData = jwtDecode<DecodedToken>(accessToken);
   } catch (error) {
-    console.error("Invalid token", error);
+    console.error("Invalid token:", error);
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
   const role = decodedData?.role;
-  console.log("role:", role);
 
-  if (role && roleBasedPrivateRoutes[role]) {
-    const allowedRoutes = roleBasedPrivateRoutes[role];
+  if (!role) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+  console.log("User Role:", role);
 
-    // Check if the pathname matches any allowed route for the role
-    if (
-      allowedRoutes.some((route) =>
-        typeof route === "string"
-          ? pathname === route // Exact match for string routes
-          : (route as RegExp).test(pathname)
-      )
-    ) {
-      return NextResponse.next();
-    } else {
-      // Redirect users to their default dashboard based on their role
-      if (role === "admin") {
-        return NextResponse.redirect(new URL("/dashboard/admin", request.url));
-      } else if (role === "user") {
-        return NextResponse.redirect(new URL("/dashboard", request.url));
-      }
-    }
+  // 🔹 Role-based route protection
+  const allowedRoutes = roleBasedPrivateRoutes[role];
+  if (!allowedRoutes?.includes(pathname)) {
+    return NextResponse.redirect(
+      new URL(role === "admin" ? "/dashboard/admin" : "/dashboard", request.url)
+    );
   }
 
-  // Redirect unauthorized access to "/login"
-  return NextResponse.redirect(new URL("/login", request.url));
+  return NextResponse.next();
 }
 
+// 🔹 Middleware will be applied to these routes
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/admin"], // Match these routes
+  matcher: ["/login", "/register", "/dashboard", "/dashboard/admin"],
 };

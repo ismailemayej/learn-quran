@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import ButtonA from "../button";
+import NextLink from "next/link";
 export const BlogCard = ({
   className,
   children,
@@ -62,16 +62,11 @@ export const BlogGridItem = ({
         <div className="font-sans font-bold line-clamp-2 text-neutral-800 dark:text-neutral-200 mb-2 mt-2">
           {title || "Untitled"}
         </div>
-        {/* Uncomment description if needed */}
-        {/* <div className="font-sans font-normal line-clamp-2 text-neutral-600 dark:text-neutral-400 text-xs">
-          {description || "No description available."}
-        </div> */}
-        <ButtonA
-          link={`/blog/${link}`}
-          className=" lg:absolute lg:bottom-[-6] mt-6 lg:mt-2 hover:translate-x-1 text-sm px-4 py-2 bg-blue-500 text-white dark:bg-blue-600 rounded-md hover:bg-blue-600 dark:hover:bg-blue-700 transition"
-        >
-          Details
-        </ButtonA>
+        <NextLink href={`/blog/${link}`}>
+          <button className="absolute bottom-1 text-base md:text-lg px-4 md:px-6 bg-gradient-to-r from-teal-400 to-blue-400 dark:from-teal-500 dark:to-blue-600 hover:from-teal-500 hover:to-blue-500 dark:hover:from-teal-600 dark:hover:to-blue-700 text-white font-semibold rounded-lg shadow-xl transition-all duration-300 rounded-br-3xl rounded-tl-3xl">
+            Details
+          </button>
+        </NextLink>
       </div>
     </div>
   );

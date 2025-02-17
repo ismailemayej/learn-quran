@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { UserInfo } from "@/types";
 import { signUpUser } from "@/app/api/Register";
+import { FormErrors } from "../../../types";
 
 export const education = [
   { key: "ওয়ান - ফাইভ", label: "ওয়ান - ফাইভ" },
@@ -44,21 +45,6 @@ const Registration = () => {
       }
     }
   }, [state, ref, router]);
-
-  interface FormErrors {
-    fullName?: string;
-    education?: string;
-    currentStatus?: string;
-    courseName?: string;
-    phone?: string;
-    email?: string;
-    password?: string;
-    gender?: string;
-    year?: string;
-    batch?: string;
-    qualification?: string;
-    maritalstatus?: string;
-  }
 
   const validateForm = (formData: UserInfo): FormErrors => {
     const newErrors: FormErrors = {};

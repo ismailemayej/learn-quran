@@ -3,6 +3,7 @@ import { apiClient } from "@/app/api/baseUrl/BaseUrl";
 import UserDetailsPage from "./details";
 
 const UserDetails = async ({ params }: any) => {
+  console.log("id:::::::::::::mmm", params);
   try {
     const response = await apiClient.get(`/api/users?email=${params.userId}`, {
       headers: {

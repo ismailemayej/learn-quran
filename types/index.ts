@@ -7,6 +7,7 @@ export interface User {
   _id: string;
   name: string;
   email: string;
+  role: string;
 }
 export interface UserInfo {
   courseName: string;
@@ -29,14 +30,16 @@ export interface UserInfo {
   message?: string;
 }
 export interface FormErrors {
-  fullName: string;
-  education: string;
-  currentStatus: string;
-  qualification: string;
-  year: string;
-  courseName: string;
-  gender: string;
-  phone: string;
-  email: string;
-  password: string;
+  fullName?: string;
+  education?: string;
+  currentStatus?: string;
+  courseName?: string;
+  phone?: string;
+  email?: string;
+  password?: string;
+  gender?: string;
+  year?: string;
+  batch?: string;
+  qualification?: string;
+  maritalstatus?: string;
 }

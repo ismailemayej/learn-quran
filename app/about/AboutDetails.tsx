@@ -34,7 +34,7 @@ const AboutDetails: React.FC = () => {
             রহমত লাভ করি।
           </p>
           <p className="text-lg md:text-xl font-semibold text-teal-600 dark:text-teal-400 text-center lg:text-left">
-            "আল কুরআনের আলো ছড়িয়ে দিন আপনার জীবনে।"
+            আল কুরআনের আলো ছড়িয়ে দিন আপনার জীবনে।
           </p>
         </div>
 

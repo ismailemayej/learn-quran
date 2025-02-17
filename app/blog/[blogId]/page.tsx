@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 const BlogDetails = async ({ params }: any) => {
   const res = await fetch(
     `https://portfolio-server-six-tau.vercel.app/api/v1/blogs/${params.blogId}`,

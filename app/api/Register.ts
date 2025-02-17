@@ -5,7 +5,7 @@ export async function signUpUser(pre: FormData, fromData: FormData) {
     const formattedData = Object.fromEntries(fromData.entries());
     formattedData.approve = "false";
     const response = await apiClient.post(
-      "/api/auth/register",
+      "/api/users/register",
       JSON.stringify(formattedData),
       {
         headers: {

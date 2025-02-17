@@ -25,12 +25,12 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
-};
+// export const viewport: Viewport = {
+//   themeColor: [
+//     { media: "(prefers-color-scheme: light)", color: "white" },
+//     { media: "(prefers-color-scheme: dark)", color: "black" },
+//   ],
+// };
 
 export default function RootLayout({
   children,
@@ -42,14 +42,14 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased roboto",
+          "min-h-screen  font-sans antialiased roboto",
           fontSans.variable
         )}
       >
         {" "}
         <Toaster className="bangla" />
         <Top />
-        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+        <Providers>
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className=" mx-auto  pt-6 container lg:px-0 px-3 flex-grow">

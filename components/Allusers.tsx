@@ -43,7 +43,7 @@ const Allusers = ({ user }: any) => {
 
   return (
     <div className="border rounded-lg py-2 px-1 shadow-lg bangla">
-      <NextLink href={`/user/${user?.email}`}>
+      <NextLink href={`/users/${user?.email}`}>
         <div className="flex gap-1 justify-between px-1">
           <User
             className="text-left"

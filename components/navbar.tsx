@@ -25,6 +25,7 @@ interface User {
   _id: string;
   name: string;
   email: string;
+  role: string;
 }
 import { userInformation } from "@/app/api/UserInformation";
 
@@ -56,6 +57,7 @@ export const Navbar = () => {
     fetchUser();
   }, []);
 
+  console.log("user", user);
   // Logout handler
   const handleLogout = () => {
     RemoveCookie("accessToken");
@@ -97,6 +99,35 @@ export const Navbar = () => {
               </NextLink>
             </NavbarItem>
           ))}
+
+          {/* Conditionally add extra Nav Items based on user role */}
+          {user?.role === "user" && (
+            <NavbarItem className="hover:text-[#fea621]" key="/dashboard">
+              <NextLink
+                className={clsx(
+                  linkStyles({ color: "foreground" }),
+                  "hover:font-semibold text-white transition-all duration-200"
+                )}
+                href="/dashboard"
+              >
+                Dashboard
+              </NextLink>
+            </NavbarItem>
+          )}
+
+          {user?.role === "admin" && (
+            <NavbarItem className="hover:text-[#fea621]" key="/admin-dashboard">
+              <NextLink
+                className={clsx(
+                  linkStyles({ color: "foreground" }),
+                  "hover:font-semibold text-white transition-all duration-200"
+                )}
+                href="/dashboard/admin"
+              >
+                Admin Dashboard
+              </NextLink>
+            </NavbarItem>
+          )}
         </ul>
       </NavbarContent>
 
@@ -131,7 +162,7 @@ export const Navbar = () => {
           >
             <GithubIcon className="w-6 h-6 text-white" />
           </Link>
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
         </NavbarItem>
       </NavbarContent>
 
