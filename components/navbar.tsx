@@ -14,8 +14,7 @@ import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import { GithubIcon, Logo } from "@/components/icons";
+import { Logo } from "@/components/icons";
 import { RemoveCookie } from "@/utils/Cookies"; // Import RemoveCookie
 import { useRouter } from "next/navigation"; // Import router
 
@@ -28,6 +27,8 @@ interface User {
   role: string;
 }
 import { userInformation } from "@/app/api/UserInformation";
+import { User2Icon } from "lucide-react";
+import { ThemeSwitch } from "./theme-switch";
 
 export const Navbar = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -157,12 +158,12 @@ export const Navbar = () => {
           <Link
             isExternal
             aria-label="Github"
-            href={siteConfig.links.github}
+            href="/"
             className="hover:opacity-80 transition-opacity duration-200"
           >
-            <GithubIcon className="w-6 h-6 text-white" />
+            <User2Icon className="w-6 h-6 text-white" />
           </Link>
-          {/* <ThemeSwitch /> */}
+          <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
@@ -170,11 +171,11 @@ export const Navbar = () => {
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <Link
           isExternal
-          aria-label="Github"
-          href={siteConfig.links.github}
+          aria-label="home"
+          href="/"
           className="hover:opacity-80 transition-opacity duration-200"
         >
-          <GithubIcon className="w-6 h-6 text-white" />
+          <User2Icon className="w-6 h-6 text-white" />
         </Link>
         <NavbarMenuToggle className="text-white" />
       </NavbarContent>

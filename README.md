@@ -1,53 +1,44 @@
-# Next.js & HeroUI Template
+# 📖 Learn Quran
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+An interactive web platform designed to help users learn the Quran with ease. The application offers a clean, responsive UI and features such as audio playback, structured Surah listing, and learning progress tracking. Suitable for both beginners and advanced learners.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+🚀 **Live Site**: [https://learn-quran-roan.vercel.app](https://learn-quran-roan.vercel.app)
 
-## Technologies Used
+---
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## ✨ Features
 
-## How to Use
+- 📚 Structured Quranic lessons
+- 🔊 Audio playback for verses
+- 📱 Fully responsive UI
+- 📈 Progress tracking (coming soon)
+- 📖 Surah and Ayah listing
+- 🕌 Islamic educational resources
 
-### Use the template with create-next-app
+---
 
-To create a new project based on this template using `create-next-app`, run the following command:
+## 🛠️ Tech Stack
 
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
+- **Frontend**: React, Tailwind CSS, Framer Motion
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Hosting**: Vercel (Client), Render/Other (Server)
 
-### Install dependencies
+---
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+## 🧑‍💻 Getting Started
 
-```bash
-npm install
-```
+### Prerequisites
 
-### Run the development server
+- Node.js (v14+)
+- npm or yarn
+- MongoDB (local or cloud instance)
 
-```bash
-npm run dev
-```
+### Installation
 
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+1. **Clone the repo**
 
 ```bash
-public-hoist-pattern[]=*@heroui/*
+git clone https://github.com/ismailemayej/learn-quran.git
+cd learn-quran
 ```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
